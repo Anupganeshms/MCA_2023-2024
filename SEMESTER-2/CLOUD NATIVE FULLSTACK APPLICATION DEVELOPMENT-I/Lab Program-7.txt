@@ -4,7 +4,6 @@ QUES: Write a Singleton class which is thread safe and immutable.
 //Program-7
 
 package lab7;
-
 import java.util.HashMap;
 import java.util.Map;
 
