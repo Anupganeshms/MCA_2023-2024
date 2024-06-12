@@ -1,0 +1,37 @@
+QUES: Write a program to create Fibonacci series using generators and stack the same with a decorator to find the time taken by the generator.
+
+
+import time
+#defining a decorator
+def calltime(func):
+        def inner(*args):
+                st=time.time()
+                print("the start time is",st)
+                func(*args)
+                et=time.time()
+                print("The end time is",et)
+                d=et - st
+                print("The time taken is",d)
+                minutes,sec=divmod(d,60)
+                print("Minutes : ",minutes,"\nSeconds : ",sec)
+        return inner
+#defining a generator
+def Fibs():
+        a,b=0,1
+        while(True):
+                yield a
+                c=a+b
+                a=b
+                b=c
+                #a,b=b,a+b
+n=int(input("Enter the value of n: "))
+
+
+@calltime
+def my(n):
+        fibs=Fibs()
+        for f in range(n):
+                print(next(fibs))
+
+#calling my function
+my(n)
