@@ -4,7 +4,6 @@ QUES: Design a static web portal using HTML5 semantic elements and Bootstrap of 
 //program1
 
 
-
 //index.html
 
 
