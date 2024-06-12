@@ -1,4 +1,7 @@
-﻿Program 6
+QUES: Write a Java code to demonstrate producer & consumer problems using thread wait & notify methods.
+
+
+//﻿Program 6
 
 
 package lab6;
