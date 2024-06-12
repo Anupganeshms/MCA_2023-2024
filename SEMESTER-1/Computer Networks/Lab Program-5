@@ -1,0 +1,62 @@
+QUES: Build DHCP server using dns-masq with and without MAC binding with IPV4 and IPV6
+
+
+//AT SERVER SIDE
+
+//here we have 2 system with
+//system1: ip-162.10.10.10 and 
+//system2: ip-162.10.10.20
+
+sudo apt-get install dnsmasq
+sudo ifconfig
+sudo systemctl stop NetworkManager
+sudo ifconfig eno1 162.10.10.10 netmask 255.255.0.0 up
+sudo ifconfig
+ping 162.10.10.20
+
+sudo systemctl stop dnsmasq   //(check for INACTIVE)
+sudo lsof -i:53               //(check for systemd-resolved services)
+sudo nano /etc/dnsmasq.conf
+port=53
+bogus-priv
+strict-order
+expand-hosts
+dhcp-range=162.10.10.1,162.10.10.200
+dhcp-option=option:router,162.10.10.1
+dhcp-option=option:netmask,255.255.0.0
+sudo systemctl stop systemd-resolved
+sudo systemctl start dnsmasq
+sudo systemctl status dnsmasq( it should show ACTIVE)
+
+//AT CLIENT SIDE
+
+sudo dhclient -v
+
+
+
+
+
+
+
+//METHOD-2
+
+//AT SERVER SIDE
+
+sudo apt-get install dnsmasq
+sudo ifconfig
+sudo systemctl stop NetworkManager
+sudo ifconfig eno1 162.10.10.10 netmask 255.255.0.0 up
+sudo ifconfig
+ping 162.10.10.20
+
+sudo systemctl stop dnsmasq
+sudo systemctl status dnsmasq          //(check for INACTIVE)
+sudo lsof -i:53                       //(check for systemd-resolved services)
+sudo dnsmasq -i eno1 -I lo -a 162.10.10.10 --dhcp-range=162.10.10.1,162.10.10.50 -d -u root --log-dhcp -q
+
+//AT CLIENT SIDE
+
+sudo dhclient -v
+
+
+//NOTE:if above command do not work, stop systemd-resolved services and then run the command.
