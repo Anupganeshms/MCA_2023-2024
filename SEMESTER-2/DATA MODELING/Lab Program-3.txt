@@ -1,5 +1,5 @@
 QUES: Create and implement CRUD operations using MongoDB for any one of the domains. Telecom, Tourism, Human Resource Management and Others.
-//Note: Minimum Six (6) Queries to be executed
+//Note: Minimum Six (6) Queries to be executed.
 
 
 //Program-3 commands
