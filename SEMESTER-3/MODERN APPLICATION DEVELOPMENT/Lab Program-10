@@ -1,0 +1,123 @@
+Ques: Build an application to do a stock display using PWA using a raw JSON file.
+
+
+lab10
+
+companies.json
+
+["AAPL","PRAA","GOOGL"]
+
+x-------------------x----------------------
+
+server.js
+
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js')
+            .then(registration => {
+                console.log('Service worker is registered', registration);
+            })
+            .catch(err => {
+                console.log('Registration failed', err);
+            });
+    });
+}
+
+x-----------------x-----------------------------
+stock.html
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Balance Sheet Statement (realtime fetch)</title>
+    <script src="server.js"></script>
+</head>
+
+<body>
+    <center>
+        <h1>Simple Balance Sheet Statement (realtime fetch)</h1>
+        <table id='tb1' border="1">
+            <tr>
+                <th style="width: 90px;">Date</th>
+                <th style="width: 120px;">Receivables</th>
+                <th style="width: 120px;">Cash and cash equivalents</th>
+                <th style="width: 120px;">Total currency assets</th>
+                <th style="width: 120px;">Payables</th>
+                <th style="width: 120px;">Net Debt</th>
+            </tr>
+        </table>
+    </center>
+
+ 
+
+    <script>
+        window.addEventListener('DOMContentLoaded', async () => {
+            const fetchData = async (url) => {
+                try {                   
+                    const response = await fetch(url);
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+                    return await response.json();
+                } catch (error) {
+                    console.error(`Error fetching data from ${url}:`, error);
+                    return null;
+                }
+            };
+
+            const processAndDisplayData = (data) => {
+                const table = document.getElementById("tb1");
+
+                const tr = document.createElement('tr');
+                for (const key of ["date", "netReceivables", "cashAndCashEquivalents", "totalCurrentAssets", "accountPayables", "netDebt"]) {
+                    const td = document.createElement('td');
+                    td.innerHTML = data[key];
+                    tr.appendChild(td);
+                }
+
+                table.appendChild(tr);
+            };
+
+            comp = ['AAPL'];
+            const companiesUrl = 'companies.json';
+            comp=await fetchData(companiesUrl);
+
+            for (let i = 0; i < comp.length; i++) {
+                const apiKey = 'qUxXyLDVqMjSaMcBeqlr6ab0zn3YssCe';
+                apiUrl = `https://financialmodelingprep.com/api/v3/balance-sheet-statement/${comp[i]}?period=annual&apikey=${apiKey}`;
+                data = await fetchData(apiUrl);
+                if (data) {
+                    processAndDisplayData(data[0]);
+                }
+            }
+
+        });
+    </script>
+
+</body>
+
+</html>
+
+
+x-------------------x---------------------------
+
+sw.js
+
+// sw.js
+
+self.addEventListener('install', event => {
+    console.log('Service worker installing');
+    self.skipWaiting();
+});
+
+self.addEventListener('activate', event => {
+    console.log('Service worker activating...');
+});
+
+self.addEventListener('fetch', event => {
+    console.log('Fetching', event.request.url);
+    // Add caching or other fetch handling logic here if needed
+});
