@@ -1,5 +1,6 @@
 Ques: Implement importing of user defined modules using Magic Methods.
 
+
 //STEP:1
 //Create a python file name as "magic1.py"
 
