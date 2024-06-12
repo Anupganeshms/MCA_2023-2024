@@ -1,0 +1,53 @@
+Ques: Consider the iris dataset and apply the Multilayer perceptron to classify the type of the flower. Analyze the performance of the perceptron and display the output.
+
+
+import pandas as pd
+import numpy as np
+import seaborn as sb
+import matplotlib.pyplot as plt
+from sklearn.neural_network import MLPClassifier
+#multi layer perceptron 
+#Perceptron is a single-layer neural network linear or a ML algorithm used for supervised learning of various binary classifiers.
+#mlp has input and output layers, and one or more hidden layers with many neurons stacked together.
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score,confusion_matrix
+
+
+data=pd.read_csv('C:/Users/DS4/Downloads/iris.csv')
+
+data.shape
+
+data.info()
+
+data.isna().sum()
+
+data.head()
+
+X=data.drop(['Id','Species'],axis=1)
+y=data['Species']
+
+X.head()
+
+y.head()
+
+X_train,X_test,y_train,y_test=train_test_split(X,y,test_size=0.2,random_state=42)
+
+mlp=MLPClassifier(hidden_layer_sizes=(100,50),max_iter=500,activation='relu',solver='adam',random_state=42)
+
+mlp.fit(X_train,y_train)
+
+y_pred=mlp.predict(X_test)
+
+accuracy_score(y_test,y_pred)
+
+cm=confusion_matrix(y_test,y_pred)
+ #table that is used to define the performance of a classification algorithm.
+sb.heatmap(cm,annot=True)
+
+X_test
+
+result=mlp.predict([[6.7,3.0,5.2,2.3]])
+
+print(result)
+
+accuracy_score(y_test,y_pred)
