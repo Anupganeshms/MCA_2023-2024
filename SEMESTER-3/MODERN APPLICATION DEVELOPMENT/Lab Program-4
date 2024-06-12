@@ -1,0 +1,66 @@
+Ques: Demonstrate adding and removing fragments at run time.
+
+
+step
+1. add a text view "Fragment"
+2. add a button "click".
+3. give id to constraint i.e "clayout".
+4. create a fragment 
+file -> New -> Fragment -> Fragment(Blank)
+5. Name it as "FragmentOne" and fragment Layout Name is "fragment_one".
+6. Create one more fragment and Name it as "FragmentTwo" and fragment Layout Name is "fragment_two".
+7. We will not use these fragment java file but we will call then inside our MainActivity.java file.
+8. Go to fragment_one.xml and right clight on "Ab TextView"@string....."" and delete it.
+9. go to code aspect of fragment_one.xml clear "FrameLayout" and calling "Constraintlayout" select the first option.
+10. Download two images from online let say "image1" and "image2" and save it in drawblesection.
+11. create a image view and select the image1 you saved. also set it's size. Also set the constraint.
+12. Repeat same for fragment_two.xml.
+13. go to fragment_one.xml and copy the size wala code dont copy id and paste it in fragment_two.xml.
+14. Go to activity_main.xml and select the button.
+15. go to attribute and search a functional property called "onClick" and name it as "switchFragment".
+16. code the MainActivity.java file.
+
+-------------x-------------------------x--------------------------
+package com.example.lab4;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
+import android.os.Bundle;
+import android.view.View;
+
+public class MainActivity extends AppCompatActivity {
+
+    FragmentOne fragmentOne = new FragmentOne();
+
+    FragmentTwo fragmentTwo = new FragmentTwo();
+
+    int showingFragments= 0;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        FragmentManager fragmentManager= getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.add(R.id.clayout,fragmentOne);
+        showingFragments = 1;
+        fragmentTransaction.commit();
+    }
+
+    public void switchFragment(View view) {
+        FragmentManager fragmentManager= getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        if (showingFragments==1){
+            fragmentTransaction.replace(R.id.clayout,fragmentTwo);
+            showingFragments= 2;
+        }else {
+            fragmentTransaction.replace(R.id.clayout,fragmentOne);
+            showingFragments = 1;
+        }
+        fragmentTransaction.commit();
+
+    }
+}
+
