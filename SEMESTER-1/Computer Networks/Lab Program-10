@@ -1,0 +1,40 @@
+Ques: Demonstrate Proxy - Server setup for a web server and SSH port forwarding.
+
+
+//here we have 2 system with
+//system1: ip-162.10.10.10 and 
+//system2: ip-162.10.10.20
+
+//at server side:
+
+sudo apt-get install squid
+sudo apt-get install lynx
+sudo apt install python3
+sudo ifconfig
+sudo systemctl stop NetworkManager
+sudo ifconfig eno1 162.10.10.10 netmask 255.255.0.0 up
+sudo ifconfig
+ping 162.10.10.20
+
+mkdir  /tmp/website
+cd  /tmp/website
+echo  "hello mca001"  >  index.html
+sudo apt install python3
+python3  -m  http.server  5000  --bind  127.0.0.30
+
+//Run http://127.0.0.30:5000  in web browser at server side to check if if showing result or not.
+
+//At client side:
+
+sudo ifconfig
+sudo systemctl stop NetworkManager
+sudo ifconfig eno1 162.10.10.20  netmask  255.255.0.0  up
+sudo ifconfig
+ping 162.10.10.10
+ssh cna1@162.10.10.10  -v  -L  127.0.0.20:8000:127.0.0.30.5000
+
+//Run http://127.0.0.20:8000  in web browser at client side
+
+//Note :
+1) ssh cna1@162.10.10.10  -v  -L  127.0.0.20:8000:127.0.0.30.5000
+in this cna1 is server user name and 162.10.10.10 is also server ip address.
