@@ -1,6 +1,7 @@
 QUES: Write a python program to Insert, Search, and Retrieve data into Employee DATABASE.
 
 
+
 #mysql -u <user> -p -H <host>             ->used to check whether terminal is conected to mysql or not
 #show databases;                          -> used to list all databases
 #create database <name of database>;      -> to create a database
