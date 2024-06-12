@@ -1,0 +1,24 @@
+QUES: Demonstrate to calculate IP addresses using ipcalc.
+
+
+//FOR THIS PROGRAM WE NOT NEED SWITCH, WE CAN DO THIS INDIVIDUALLY ON OUR OWN SYSTEM.
+
+sudo apt-get install ipcalc
+sudo ifconfig
+sudo systemctl stop NetworkManager
+sudo ifconfig eno1 162.10.10.10 netmask 255.255.0.0 up
+sudo ifconfig
+ping 162.10.10.10
+
+//The above step are not mandatory. Can be done without stopping network manage also.
+
+ipcalc 11.10.10.20 (classA)
+ipcalc 162.10.10.20 (classB)
+ipcalc 191.10.10.20 (classC)
+
+ipcalc  <ip>/<subnet>  -s  <no. of hosts>
+
+ipcalc 162.10.10.20/24  -s  16
+
+//note:
+1) you have to show manual calculation also
