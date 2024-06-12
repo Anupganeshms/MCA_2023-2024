@@ -1,4 +1,7 @@
-﻿Program-7
+QUES: Write a Singleton class which is thread safe and immutable.
+
+
+//Program-7
 
 package lab7;
 
