@@ -1,0 +1,17 @@
+QUES: Demonstrate basic trouble shooting using ping, traceroute, ifconfig, nslookup, netstat, pathping and route
+
+
+sudo apt-get install net-tools
+sudo apt-get install traceroute
+sudo ifconfig
+sudo systemctl stop NetworkManager
+sudo ifconfig eno1 162.10.10.10 netmask 255.255.0.0 up
+sudo ifconfig
+ping 162.10.10.20
+
+ping 162.10.10.10
+traceroute 162.10.10.10
+sudo ifconfig ethernetid
+nslookup <ip>
+netstat -a
+route <ip>
