@@ -7,7 +7,6 @@ QUES: Design JSON and XML document to store information about a student in MCA D
 //file1.xml
 
 
-
 <students>
 <student>
 <name>Ashish</name>
