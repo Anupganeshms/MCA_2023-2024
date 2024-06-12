@@ -1,4 +1,7 @@
-﻿Program -5
+QUES: Write a Java program that demonstrated the Thread Life Cycle.
+
+
+//﻿Program -5
 
 package thread;
 
