@@ -1,6 +1,7 @@
 QUES: Build DNS server for resolving the names and IP addresses.
 
 
+
 sudo apt-get install dnsmasq
 sudo apt-get install dnsutils
 sudo ifconfig
