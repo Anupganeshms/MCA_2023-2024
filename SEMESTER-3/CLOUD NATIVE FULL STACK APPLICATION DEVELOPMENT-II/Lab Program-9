@@ -1,0 +1,79 @@
+Ques: Using a docker compose file, deploy multiple apps/containers (eg: MySql,SpringBoot) onto the docker server.
+
+
+Program 9: 
+
+
+
+
+1. Download jar file from folder prog9: 
+
+2. use the mysql:latest image from online:
+
+3. Open new terminal and change Directory to the folder that contain jar file.
+
+4. create a docker-compose.yml using command “nano docker-compose.yml ”.
+
+5. paste these line of code in Dockerfile and save it.
+
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+      MYSQL_DATABASE: springbootdb
+      MYSQL_USER: springbootuser
+      MYSQL_PASSWORD: springbootpwd
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+
+  spring-boot-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysql
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/springbootdb
+      SPRING_DATASOURCE_USERNAME: springbootuser
+      SPRING_DATASOURCE_PASSWORD: springbootpwd
+
+volumes:
+  mysql-data:
+
+
+6. create a Dockerfile using command “nano Dockerfile”.
+
+7. paste these line of code in Dockerfile and save it.
+
+FROM eclipse-temurin:17-jdk-alpine
+MAINTAINER myNAME
+COPY demo1-0.0.1-SNAPSHOT.jar /home/demo1-0.0.1-SNAPSHOT.jar
+CMD ["java","-jar","/home/demo1-0.0.1-SNAPSHOT.jar"]
+
+8. Note:
+	. if Mysql is running as localhost in your system, it will throw error.  
+	. first check if port number 3306 is free or not using command - “ sudo lsof -i :3306 ”
+	. if yes , then run this command- “ sudo service mysql stop ”
+
+9. run command – sudo docker-compose up
+
+10 . open postman and use get, post for demonstration.
+
+11.  GET:  http://localhost:8080/message
+
+12. POST: http://localhost:8080/message
+{
+"message": "HELLO World"
+}
+
+
+
