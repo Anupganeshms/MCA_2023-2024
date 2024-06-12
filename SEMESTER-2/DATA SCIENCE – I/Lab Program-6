@@ -1,0 +1,73 @@
+Ques: For the market basket dataset, apply apriori algorithm and identify the best rules based on support and confidence values.
+
+
+#import all required packages..
+#!pip install apyori
+import pandas as pd
+import numpy as np
+from apyori import apriori
+
+df = pd.read_csv("groceries - groceries.csv", header=None)
+column_size=df.shape[1]
+df.info()
+df=df.drop([0], axis=1)
+df=df.drop([0], axis=0)
+
+df.head()
+
+df.fillna(0,inplace=True)
+df.head()
+
+df.shape
+
+transactions = []
+#for i in range(0,len(df)):
+# transactions.append([str(df.values[i,j]) for j in range(0,column_size) if str(df.values[i,j])!='0'])
+for i in range(0, len(df)-1):
+transaction_items = []
+for j in range(0, column_size-1):
+if str(df.values[i, j]) != '0':
+transaction_items.append(str(df.values[i, j]))
+transactions.append(transaction_items)
+transactions[2]
+['whole milk']
+rules = apriori(transactions, min_support=0.003, min_confidance=0.2, min_lift=3, min_length=2)
+df_results = pd.DataFrame(list(rules))
+
+df_results
+
+support = df_results.support
+support
+
+first_values = []
+second_values = []
+third_values = []
+fourth_value = []
+
+for i in range(len(df_results)):
+single_list = df_results['ordered_statistics'][i][0]
+print(single_list)
+first_values.append(list(single_list[0]))
+print(first_values)
+
+second_values.append(list(single_list[1]))
+print(second_values)
+
+third_values.append(single_list[2])
+print(third_values)
+
+fourth_value.append(single_list[3])
+print(fourth_value)
+
+lhs = pd.DataFrame(first_values)
+rhs = pd.DataFrame(second_values)
+
+confidance=pd.DataFrame(third_values,columns=['Confidance'])
+lift=pd.DataFrame(fourth_value,columns=['lift'])
+df_final = pd.concat([lhs,rhs,support,confidance,lift], axis=1)
+df_fina
+
+df_final.fillna(value=' ', inplace=True)
+df_final.tail()
+
+
