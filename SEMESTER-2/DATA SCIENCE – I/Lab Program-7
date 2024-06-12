@@ -1,0 +1,67 @@
+QUES: For the Mall-Customers dataset Implement k-means clustering algorithm and visualize the clusters.
+
+
+#Use Necessary libraries
+
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+from sklearn.cluster import KMeans
+import numpy as np
+
+df=pd.read_csv("dataset/Mall_Customers.csv")
+df
+
+x=df[["Annual Income (k$)","Spending Score (1-100)"]]
+y=df[["Annual Income (k$)","Age"]]
+
+sns.boxplot(y='Annual Income (k$)',data=df)
+plt.show()
+q1=df['Annual Income (k$)'].quantile(0.25)
+q3=df['Annual Income (k$)'].quantile(0.95)
+iqr=q3-q1
+lw=q1-1.5*iqr
+hw=q3+1.5*iqr
+tmpdf=df[df['Annual Income (k$)'] < hw]
+sns.boxplot(y='Annual Income (k$)',data=df)
+plt.show()
+
+x
+
+y
+
+sns.scatterplot(x="Spending Score (1-100)",y="Annual Income (k$)",data=x)
+plt.show()
+sns.scatterplot(x="Age",y="Annual Income (k$)",data=y)
+plt.show()
+
+ssex=[]
+ssey=[]
+for i in range(1,10):
+    modelx=KMeans(n_clusters=i)
+    modelx.fit(x)
+    ssex.append(modelx.inertia_)
+    modely=KMeans(n_clusters=i)
+    modely.fit(y)
+    ssey.append(modely.inertia_)
+
+plt.plot(range(1,10),ssex)
+plt.show()
+plt.plot(range(1,10),ssey)
+plt.show()
+
+modelx=KMeans(n_clusters=5)
+modelx.fit(x)
+modely=KMeans(n_clusters=4)
+modely.fit(y)
+
+x['Category']=modelx.labels_
+y['Category']=modely.labels_
+
+x
+
+sns.scatterplot(x="Spending Score (1-100)",y="Annual Income (k$)",hue="Category",data=x,palette="colorblind")
+plt.show()
+sns.scatterplot(x="Age",y="Annual Income (k$)",hue="Category",data=y,palette="colorblind")
+plt.show()
+
