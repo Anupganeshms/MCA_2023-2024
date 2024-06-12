@@ -1,3 +1,7 @@
+QUES: Create and implement CRUD operations using MongoDB for any one of the domains. Health Care, Energy, Agriculture.
+//Note: Minimum Six (6) Queries to be executed
+
+
 db.patient.insertMany([
   {
     ssn: 'M001',
