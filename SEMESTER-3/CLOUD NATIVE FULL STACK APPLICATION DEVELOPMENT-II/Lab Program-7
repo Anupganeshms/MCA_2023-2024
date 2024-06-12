@@ -1,0 +1,223 @@
+Ques: Demonstrate Spring Data JPA integration in a Spring Boot application using Hibernate.
+
+
+Lab7
+
+1. Student.java
+
+package com.example.lab_7;
+
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name="students")
+public class Student {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	int id;
+	int totalmarks; 
+	
+public int getId() {
+	return id;
+}
+public void setId(int id) {
+	this.id = id;
+}
+public int getTotalmarks() {
+	return totalmarks;
+}
+public void setTotalmarks(int totalmarks) {
+	this.totalmarks = totalmarks;
+}
+
+public String getName() {
+	return name;
+}
+public void setName(String name) {
+	this.name = name;
+}
+String name;
+@Override
+public String toString() {
+	return "Student [id=" + id + ", totalmarks=" + totalmarks + ", name=" + name + "]";
+}  
+
+}
+
+x-----------------x---------------------------------
+
+2. StudentRepository.java
+
+package com.example.lab_7;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface StudentRepository extends JpaRepository<Student,Integer> {
+
+}
+
+x-----------------------x-----------------------------
+
+3. StudentService.java
+
+package com.example.lab_7;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+
+@Service
+public class StudentService {
+
+	@Autowired
+	private StudentRepository studentRepository;
+	
+	void insertMessage(String name,int marks) {
+	Student m = new Student();
+		m.setName(name);
+		m.setTotalmarks(marks);
+		studentRepository.save(m);
+	}
+	
+	List<Student> displayMessage(){
+		return studentRepository.findAll();
+	}
+	
+	void updateMessage(int id,int marks) {
+		Optional<Student>  s= studentRepository.findById(id);
+		if (s.isPresent()) {
+			Student student =s.get();
+			student.setTotalmarks(marks);
+			studentRepository.save(student);
+		}
+		else {
+			System.out.println("No such record");
+			
+		}
+	}
+}
+
+x-----------------------x-----------------------------
+
+4. application.properties
+
+#spring.application.name=Lab7
+
+#Database Configuration
+spring.datasource.url=jdbc:mysql://localhost:3306/student
+spring.datasource.driverClassName=com.mysql.cj.jdbc.Driver
+spring.datasource.username=root
+spring.datasource.password=root
+
+#Hibernate configuration
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql: true
+
+
+
+spring.datasource.url=jdbc:mysql://172.16.34.43:3306/db_mca016
+spring.datasource.driverClassName=com.mysql.cj.jdbc.Driver
+spring.datasource.username=mca016
+spring.datasource.password=mca016
+spring.jpa.show-sql: true
+spring.jpa.hibernate.ddl-auto=update
+
+x----------------x---------------------------------
+
+5. Lab7Application.java
+
+package com.example.lab_7;
+
+import java.util.*;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+
+@SpringBootApplication
+public class Lab7Application {
+
+	public static void main(String[] args) {
+		ApplicationContext context=SpringApplication.run(Lab7Application.class, args);
+        Scanner scanner = new Scanner(System.in);
+        
+        int ch;
+        String name;
+        int marks;
+        
+		StudentService studentService= context.getBean(StudentService.class);
+		while(true) { 
+			System.out.println("MENU\n1.Enter name\n2.Display table\n3.Update\n4.Exit");
+			
+			switch (scanner.nextInt()) {
+			
+				case 1: {
+					System.out.println("Enter Student name:");
+					name=scanner.next();
+					System.out.println("Enter Marks");
+					marks=scanner.nextInt();
+					studentService.insertMessage(name,marks);
+					break;
+				}
+					
+			
+				case 2: {
+					List<Student> cl = studentService.displayMessage();
+					
+					for(Student m: cl) {
+						System.out.println(m.toString());
+					}
+					break;
+				}
+				
+				case 3: {
+					System.out.println("Enter Student id:");
+					ch=scanner.nextInt();
+					System.out.println("Enter updated Marks");
+					marks=scanner.nextInt();
+					studentService.updateMessage(ch, marks);
+				break;
+				}
+	
+				case 4: {
+					System.exit(0);
+				}	
+			}
+		}
+	}	
+}
+
+x-----------------------x------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
