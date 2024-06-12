@@ -1,0 +1,155 @@
+Ques: Demonstrate Dependency Injection using annotation based using Spring boot.
+
+
+//Lab1
+
+1.Ticket.com
+
+package com.example.lab1;
+
+public class Ticket {
+	
+	int ticno,price,seatno;
+	String ticktype;
+	
+	public int getTicno() {
+		return ticno;
+	}
+	public void setTicno(int ticno) {
+		this.ticno = ticno;
+	}
+	public int getPrice() {
+		return price;
+	}
+	public void setPrice(int price) {
+		this.price = price;
+	}
+	public int getSeatno() {
+		return seatno;
+	}
+	public void setSeatno(int seatno) {
+		this.seatno = seatno;
+	}
+	public String getTicktype() {
+		return ticktype;
+	}
+	public void setTicktype(String ticktype) {
+		this.ticktype = ticktype;
+	}
+}
+
+
+x------------x---------------------x-------------
+2.Customer.java
+
+package com.example.lab1;
+
+public class Customer {
+	
+	String name, address;
+	Ticket tick;
+		
+	public Ticket getTick() {
+		return tick;
+	}
+	
+	public void setTick(Ticket tick) {
+		this.tick = tick;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+}
+
+x------------------------x-------------------------
+3. 
+
+package com.example.lab1;
+
+import java.util.*;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+@SpringBootApplication
+public class Lab1Application {
+
+	public static void main(String[] args) {
+//		SpringApplication.run(Lab1Application.class, args);
+		
+		Scanner sc = new Scanner(System.in);
+		SpringApplication.run(Lab1Application.class, args);
+		ApplicationContext ac = new ClassPathXmlApplicationContext("testBean.xml");
+		
+		Customer c = (Customer) ac.getBean("customer");
+		Ticket t = (Ticket) c.getTick();
+		
+		while(true) {
+			System.out.println("1. insert the details\n 2. Display details \n"
+			+ "3. exit");
+			System.out.println("enter the choice");
+			int a = sc.nextInt();
+			
+			switch(a) {
+				case 1:
+					System.out.println("enter the customer name");
+					c.setName(sc.next());
+					System.out.println("enter the customer address");
+					c.setAddress(sc.next());
+					System.out.println("enter the ticket number");
+					t.setTicno(sc.nextInt());
+					System.out.println("enter the ticket seat no");
+					t.setSeatno(sc.nextInt());
+					System.out.println("enter the ticket price");
+					t.setPrice(sc.nextInt());
+					System.out.println("enter the ticket Type - economic/gold/platinum");
+					t.setTicktype(sc.next());
+					c.setTick(t);
+					System.out.println("thanks for input");
+					break;
+				case 2:
+					System.out.println("Customer Details:");
+					System.out.println("Name:"+c.getName()+" "+" Address:"+c.getAddress());
+					System.out.println("Ticket Details");
+					t = c.getTick();
+					System.out.println("Ticket No: "+t.getTicno());
+					System.out.println("Ticket Type: "+t.getTicktype());
+					 System.out.println("Ticket Seat No: "+t.getSeatno());
+					System.out.println("Ticket Price: "+t.getPrice());
+					break;
+				case 3:
+					System.exit(0);
+			 }
+		}
+	}
+}
+
+x-----------------x--------------------x--------------
+4.testBean.xml
+
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean id="customer" class="com.example.lab1.Customer" scope="prototype">
+ 		<property name="tick" ref="ticket"></property>
+	</bean>
+
+	<bean id="ticket" class="com.example.lab1.Ticket" scope="prototype"/>
+</beans>
+
+x----------------x-------------------------------------
+
+5.window -> preference -> search maven -> double click on maven -> check Download Artifact Javadoc
