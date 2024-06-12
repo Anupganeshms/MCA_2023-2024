@@ -1,0 +1,119 @@
+Ques: Demonstrate online and offline web page load using PWA, Service Worker and Caching.
+
+
+lab9
+
+index.html
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<link rel="manifest" href="manifest.json">
+<Script src="register.js"></Script>
+<body>
+<h1>Github Profile</h1>
+<input type="text" id="text_input">
+<input type="button" onclick="gitdata()" value="Get Profile">
+<div id='git_image'>
+<img src="" alt="profile image" id="image">
+<p id='para'></p>
+</div>
+</body>
+
+<script>
+function gitdata(){
+    var url = "https://api.github.com/users/" + document.getElementById("text_input").value;
+    fetch(url)
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log(data.avatar_url);
+        var im = document.getElementById("image");
+        im.setAttribute("src", data.avatar_url);
+        var gi = document.getElementById("para");
+        gi.innerHTML = JSON.stringify(data);
+    })
+    .catch(error => {
+        console.error('There was a problem with the fetch operation:', error);
+    });
+}
+</script>
+</html>
+
+x--------------x--------------------------------
+
+manifest.json
+
+{
+    "name": "Fetch Github Details",
+    "short_name": "API Fetch",
+    "display": "standalone",
+    "start_url": "/",
+    "id": "/",
+    "orientation": "portrait-primary",
+    "description": "Get user details from Github using its API",
+    "icons": [
+    {
+    "src": "images/pic.png",
+    "type": "image/png",
+    "sizes": "256x256"
+    }
+    ],
+    "background_color": "#AA0000",
+    "theme_color": "#CC0000"
+    }
+
+
+x--------------x------------------
+register.js
+
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker
+    .register("sw.js")
+    .then((reg)=>console.log("registered",reg))
+    .catch((err)=>console.log("err",err));
+} else {
+    console.log('No service worker support in this browser');
+}
+
+x-----------------x-----------------------
+
+sw.js
+
+self.addEventListener("install", e => { 
+    console.log("installed");
+    e.waitUntil(
+      caches
+      .open('gitdata')
+      .then(cache=>
+        cache.addAll([
+          '/git'
+        ])
+        )
+    )
+  });
+  self.addEventListener("activate", (e) => { 
+    e.waitUntil(caches.delete('gitdata'));
+    console.log("activated");
+
+  });
+  self.addEventListener("fetch", (e) => { 
+    console.log("fetched");
+    console.log(e.request);
+    e.respondWith(
+      caches.match(e.request).then(async (response)=>
+      {
+          if(response){
+            return response;
+          }
+          let data=fetch(e.request);
+          let dataClone=(await data).clone();
+          e.waitUntil(caches.open('gitdata').then(cache => cache.put(e.request,dataClone)));
+          return data;
+      })
+    )
+  });
