@@ -1,11 +1,10 @@
-program3
+QUES: Design JSON and XML document to store information about a student in MCA Department, college affiliated to VTU. Make up sample data for 20 students. Access the values through JavaScript and store in the table format.
 
 
+//program3
 
 
-
-
-file1.xml
+//file1.xml
 
 
 
@@ -30,7 +29,7 @@ file1.xml
 
 
 
-index.html
+//index.html
 
 
 
@@ -88,7 +87,7 @@ document.getElementById("show").innerHTML=tableBody;
 
 
 
-json.html
+//json.html
 
 
 
