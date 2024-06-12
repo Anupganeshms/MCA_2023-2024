@@ -1,0 +1,78 @@
+QUES: For the dataset in Q4, apply random forest algorithm to predict the student performance.
+a. Plot the important variables using seaborn.
+b. Tune the random forest for training and test data based on best parameters and implement it.
+c. Analyze the model performance and display the output.
+
+
+#import section
+import pandas as pd
+from sklearn.model_selection import train_test_split,GridSearchCV
+from sklearn.metrics import *
+import seaborn as sns
+import matplotlib.pyplot as plt
+from sklearn.ensemble import RandomForestClassifier
+
+#read section
+df=pd.read_excel('dataset/random_forest_dataset.xlsx')
+df=df.dropna()
+df=df.iloc[1:]
+df = df.rename(columns={'Unnamed: 4': 'A','Unnamed: 5': 'B','Unnamed: 6': 'C','Unnamed: 7': 'D','Unnamed: 8': 'E','Unnamed: 9': 'F','Unnamed: 10': 'G','Unnamed: 11': 'H','Unnamed: 12': 'I','Unnamed: 13': 'J','Unnamed: 14': 'Grade'})
+#df.drop('Unnamed: 0',inplace=True)
+#df.to_csv('ProcessedRF.csv')
+df[['A','B','C','D','E','F','G','H','I','J']]=df[['A','B','C','D','E','F','G','H','I','J']].astype(str).astype(float)
+df.info()
+
+df
+
+#pre-process section
+df=df.dropna()
+df.info()
+#df.drop("Name")
+#df=df.select_dtypes(include=["number"])
+
+#feature selection
+ip=df.select_dtypes(include=["number"])
+ip=df[["J","D","C","B"]]
+tar=df['Grade']
+len(ip)
+
+# train-test split
+#15--> best random state for test data
+#46--> best random state for train data
+#22--> used state for experiment
+
+#train_test_split(ip,tar,test_size=0.2,random_state= 22)
+iptrain,iptest,tartrain,tartest=train_test_split(ip,tar,test_size=0.2,random_state= 15)
+
+
+#create model and train data
+param_grid={
+    'n_estimators':[50,100,200],
+    'max_depth':[5,10,20],
+    'min_samples_split':[2,5,10],
+    'min_samples_leaf':[0,2,4]
+}
+grid_search=GridSearchCV(RandomForestClassifier(random_state=15),param_grid,cv=5,n_jobs=10)
+grid_search.fit(iptrain,tartrain)
+best_param=grid_search.best_params_
+model = RandomForestClassifier(**best_param,random_state=15)
+model.fit(iptrain, tartrain)
+
+#model purity/accuracy
+model.score(iptrain,tartrain)
+
+#model accuracy on test data
+tarpred=model.predict(iptest)
+print("Accuracy=",accuracy_score(tartest,tarpred))
+
+#confusion matrix on test data 
+confmattest=confusion_matrix(tartest,tarpred)
+sns.heatmap(confmattest,cmap='RdYlGn',annot=True,yticklabels=['S','A','B','C'])
+
+#model accuracy on custom data
+cusip=[[82,45,17,93]]
+res=model.predict(cusip)
+print(res)
+
+feature=model.feature_importances_
+sns.barplot(x=feature,y=ip.columns)
