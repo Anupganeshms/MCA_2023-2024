@@ -1,7 +1,7 @@
+QUES: Build portal RESTful web API to demonstrate to create a web resource which can be accessed using REST URI’s and demonstrate the concept of GET, POST, PUT & DELETE.
+
+
 package com.rest;
-
-
-
 public class Product {
 
 
