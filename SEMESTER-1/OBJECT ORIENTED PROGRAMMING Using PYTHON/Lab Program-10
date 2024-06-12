@@ -1,4 +1,4 @@
-QUES: Write a program to create Fibonacci series using generators and stack the same with a decorator to find the time taken by the generator.
+QUES: Write a program to create Fibonacci series using generators and stack the same with a decorator to find the time taken by the generator
 
 
 import time
