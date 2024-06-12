@@ -1,0 +1,59 @@
+//here we have 2 system with
+//system1: ip-162.10.10.10 and 
+//system2: ip-162.10.10.20
+
+//for client :
+
+sudo apt-get install openssh-client
+sudo ifconfig
+sudo systemctl stop NetworkManager
+sudo ifconfig eno1 162.10.10.10 netmask 255.255.0.0 up
+sudo  ifconfig
+ping 162.10.10.20
+
+ssh-keygen
+//Generating public/private rsa key pair.
+//Enter file in which to save the key (/home/mca/.ssh/id_rsa): home
+//Enter passphrase (empty for no passphrase):
+//Enter same passphrase again:
+//Your identification has been saved in home
+//Your public key has been saved in home.pub
+ls
+pwd
+scp  /home/mca/home.pub  cna1@162.10.10.20:/home/cna1
+
+//NOW SIMULTANEOUSLY AT SERVER SIDE on home screen
+
+sudo apt-get install openssh-server
+sudo ifconfig
+sudo systemctl stop NetworkManager
+sudo ifconfig eno1 162.10.10.20 netmask 255.255.0.0 up
+sudo  ifconfig
+ping 162.10.10.10
+
+ls
+cd  .ssh
+ls
+touch  authorized_keys
+pwd
+cd ..
+cat home.pub  >>  home/cna1/.ssh/authorized_keys
+cd .ssh
+cat  authorized_keys (to check if key moved or not)
+cd ..
+ls
+
+//NOW AT CLIENT SIDE DO
+
+ssh  -i /home/cna1/home  cna1@162.10.10.20  (to login)
+passwd: mca
+ls
+touch authorized_keys
+
+
+//Note:
+1) home/cna1/home,  the second home reffer the private key of client.
+2) So what is happening is we sent our public key to server and server saved that public key to its authorized_keys file under ssh directory.
+3) Now when client login he will login using his private key which is saved as home inside home directory.
+4) Also ( ~ ) is used when we are entering inside a directory. Here we can see we can do without using ~ sign also.
+5) when client login inside server, the server password should not be asked at client side. If it ask, program execution failed. That is why use private key while login inside server using ssh.
