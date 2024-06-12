@@ -1,0 +1,28 @@
+QUES: Build DNS server for resolving the names and IP addresses.
+
+
+sudo apt-get install dnsmasq
+sudo apt-get install dnsutils
+sudo ifconfig
+sudo systemctl stop NetworkManager
+sudo ifconfig eno1 162.10.10.10 netmask 255.255.0.0 up
+sudo ifconfig
+ping 162.10.10.10
+sudo nano /etc/dnsmasq.conf
+
+#DNS CONFIGURATION	
+	port=53
+       domain-needed
+	bogus-priv
+\	strict-order
+	expand-hosts
+	domain=ashish.in
+
+
+sudo  nano  /etc/hosts
+192.168.10.20  ashish.in
+
+sudo systemctl stop systemd-resolved
+sudo systemctl start dnsmasq
+sudo systemctl status dnsmasq
+sudo dig a ashish.in @localhost
