@@ -1,0 +1,15 @@
+QUES: Demonstrate multiple client server communication on different ports using netcat.
+
+
+sudo apt-get install netcat
+sudo ifconfig
+sudo systemctl stop NetworkManager
+sudo ifconfig eno1 162.10.10.10 netmask 255.255.0.0 up
+sudo ifconfig
+ping 162.10.10.20
+
+//AS server
+nc  -lv  <port no.>  eg1234
+
+//as client
+nc  -v  <ip of server>  <port no.>
