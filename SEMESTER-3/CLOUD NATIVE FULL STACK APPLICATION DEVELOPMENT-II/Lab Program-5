@@ -1,0 +1,125 @@
+Ques: Write a sample REST App to Validate the REST API POST & PUT request. -Design a custom response with appropriate validation errors to the caller.
+
+
+Lab5 
+
+1. Product.java
+
+package com.example.RestExample_validate;
+
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
+public class Product {
+	
+	@NotNull(message="id is required")
+	@Min(1)
+	@Max(100)
+	private Long id;
+	
+	@NotBlank(message = "Name is required")
+	private String name;
+	
+	@Min(1)
+	@NotNull(message = "Price is required")
+	private Double price;
+	
+	public Long getId() {
+		return id;
+	}
+	
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
+	public String getName() {
+		return name;
+	}
+	
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public Double getPrice() {
+		return price;
+	}
+	
+	public void setPrice(Double price) {
+		this.price = price;
+	}
+	
+}
+
+x-----------------------x-----------------------------
+
+2. ProductController.java
+
+package com.example.RestExample_validate;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import jakarta.validation.Valid;
+
+@RestController
+@RequestMapping("/api/products")
+public class ProductController {
+	
+	private final List<Product> products = new ArrayList<>();
+	
+	@GetMapping("/get")
+	public List<Product> getProduct(){
+		return products;
+	}
+	
+	@PostMapping
+	public ResponseEntity<?> addProduct(@Valid @RequestBody Product product,BindingResult result) {
+		
+		List<String> displayErrors = new ArrayList<String>();
+		
+		if (result.hasErrors()) {
+			List<FieldError> errors = result.getFieldErrors();
+			
+			for(FieldError err:errors) {
+				displayErrors.add(err.getField() + ": " + err.getDefaultMessage());
+				System.out.println( displayErrors);
+			}
+			
+			return ResponseEntity.badRequest().body(displayErrors);
+		}
+		
+		products.add(product);
+		
+		return ResponseEntity.status(HttpStatus.CREATED).body(product);
+	}
+	
+	
+}
+
+x-------------------------x------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
