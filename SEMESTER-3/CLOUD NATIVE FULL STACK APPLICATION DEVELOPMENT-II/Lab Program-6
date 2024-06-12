@@ -1,0 +1,291 @@
+Ques: Write a Java application using Hibernate to insert data into Student DATABASE and retrieve info based on particular queries (For example update, delete, search etc...).
+
+
+Lab6
+
+1. Student.java
+
+package hibe_practice;
+
+
+public class Student {
+	
+	
+	int id;
+	
+	String usn, name, address;
+	
+	int totalMarks;
+	
+	@Override
+	public String toString() {
+		return "Student [id="+ id +"+usn=" + usn + ", name=" + name + ", address=" + address + ", totalMarks=" + totalMarks + "]";
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public int getTotalMarks() {
+		return totalMarks;
+	}
+
+	public void setTotalMarks(int totalMarks) {
+		this.totalMarks = totalMarks;
+	}
+
+	public String getUsn() {
+		return usn;
+	}
+
+	public void setUsn(String usn) {
+		this.usn = usn;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+}
+
+x-------------x-------------------x-------------------
+
+2. hibe_test.java
+
+package hibe_practice;
+
+import java.awt.print.Printable;
+import java.util.List;
+import java.util.Scanner;
+
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.internal.build.AllowSysOut;
+import org.hibernate.query.Query;
+
+
+public class hibe_test {
+	public Session getSession() {
+		SessionFactory sFactory = new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
+		Session session = sFactory.openSession();
+		return session;
+	}
+	
+	public void insert(int id, String name, String address, int totalMarks) {
+		Student student = new Student();
+		student.setAddress(address);
+		student.setName(name);
+		student.setTotalMarks(totalMarks);
+		student.setUsn(address);
+		student.setId(id);
+		Session s = getSession();
+		Transaction t = s.beginTransaction();
+		s.save(student);
+		t.commit();
+		s.close();
+	}
+	
+	public List<Student> display(){
+		Session session = getSession();
+		Query query = session.createQuery("from Student");
+		List<Student> students = query.getResultList();
+		return students;
+	}
+	
+	public void search(String name) {
+		Session s = getSession();
+		Transaction transaction = s.beginTransaction();
+		Query query = s.createQuery("select s from Student s where s.name = :name", Student.class);
+		query.setParameter("name", name);
+		System.out.println(query.list());
+		transaction.commit();
+		s.close();
+	}
+	public void delete(String name) {
+		Session s = getSession();
+		Transaction transaction = s.beginTransaction();
+		Query query = s.createQuery("delete from Student s where s.name = :name");
+		query.setParameter("name", name);
+		int status = query.executeUpdate();
+		System.out.println("Rows Deleted: " + status);
+		transaction.commit();
+		s.close();
+	}
+	
+	
+	public static void main(String[] args) {
+		hibe_test hb = new hibe_test();
+		Scanner scanner = new Scanner(System.in);
+		
+		while(true) {
+			System.out.println("----------------MENU-----------------");
+			System.out.println("1. Insert");
+			System.out.println("2. Search");
+			System.out.println("3. Display");
+			System.out.println("4. Delete");
+			System.out.println("5. Exit");
+			System.out.println("Enter your Choice :  ");
+			int choice = scanner.nextInt();
+			switch (choice) {
+			case 1:
+				System.out.println("Enter the Student Details:-");
+				System.out.println("Enter name = ");
+				String name = scanner.next();
+				System.out.println("Enter id = ");
+				int id = scanner.nextInt();
+				System.out.println("Enter address = ");
+				String address = scanner.next();
+				System.out.println("Enter TotalMarks = ");
+				int totalMarks = scanner.nextInt();
+				hb.insert(id, name, address, totalMarks);
+				break;
+			case 2:
+				System.out.println("Enter name = ");
+				String name1 = scanner.next();
+				hb.search(name1);
+				break;
+			case 3:
+				System.out.println(hb.display());
+				break;
+			case 4:
+				System.out.println("Enter name = ");
+				String name2 = scanner.next();
+				hb.delete(name2);
+				break;
+			case 5:
+				System.exit(0);
+			default:
+				break;
+			}
+		}
+	}
+}
+
+x-------------------x--------------------------------
+
+3. hibernate.cfg.xml
+
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC 
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN" 
+"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<property name="hibernate.connection.driver_class">
+			com.mysql.jdbc.Driver
+		</property>
+		<property name="hibernate.connection.password">
+			mca016
+		</property>
+		<property name="hibernate.connection.url">
+			jdbc:mysql://172.16.34.43:3306/db_mca016
+		</property>
+		<property name="hibernate.connection.username">
+			mca016
+		</property>
+		<property name="hibernate.dialect">
+			org.hibernate.dialect.MySQLDialect
+		</property>
+		<mapping class="hibe_practice.Student" />
+		<mapping resource="student.hbm.xml" />
+	</session-factory>
+</hibernate-configuration>
+
+
+x--------------------x----------------------x------------
+
+4. student.hbm.xml
+
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="hibe_practice.Student" table="student1">
+		<id name="id" type="int" column="id">
+			<generator class="native" />
+		</id>
+		<property name="totalMarks" column="totalmarks" type="int" />
+		<property name="usn" column="usn" type="string" />
+		<property name="name" column="name" type="string" />
+		<property name="address" column="address" type="string" />
+	</class>
+</hibernate-mapping>
+
+x------------------x---------------------x-----------
+
+5. 
+	1.Go to my sql database and create a database name student
+	2. create a table 
+	CREATE TABLE student (
+    	id INT AUTO_INCREMENT PRIMARY KEY,
+    	name TEXT,
+   	address TEXT,
+    	totalMarks INT,
+    	usn TEXT
+	);
+
+x---------------------x------------------------------
+6. pom.xml
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>lab6</groupId>
+	<artifactId>hibernate_practice</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<dependencies>
+		<!-- https://mvnrepository.com/artifact/org.hibernate.orm/hibernate-core -->
+		<dependency>
+			<groupId>org.hibernate.orm</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>6.4.4.Final</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>6.4.4.Final</version>
+			<type>pom</type>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.mysql/mysql-connector-j -->
+		<dependency>
+			<groupId>com.mysql</groupId>
+			<artifactId>mysql-connector-j</artifactId>
+			<version>8.3.0</version>
+		</dependency>
+	</dependencies>
+
+
+</project>
+
+x--------------------------x---------------------------------------------
+
+
+
+
+
+
+
+
+
