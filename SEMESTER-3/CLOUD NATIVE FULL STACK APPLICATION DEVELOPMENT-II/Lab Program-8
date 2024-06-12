@@ -1,0 +1,41 @@
+Ques: Demonstrate using Spring Boot: Complete the docker setup on your Sandbox.
+ - Download a docker image from Docker Hub and deploy the same on your docker server
+ - Build a sample custom image for any of the App of your choice and run the app image as a container.
+
+
+Program - 8
+
+Demonstrate a simple spring boot application to build and install the custom image into Docker.
+
+Steps:
+
+1. Download jar file from folder prog-8:
+
+2. Open new terminal and change Directory to the folder that contain jar file.
+
+3. create a Dockerfile using command “nano Dockerfile”.
+
+4. paste these line of code in Dockerfile and save it.
+
+FROM eclipse-temurin:17-jdk-alpine
+MAINTAINER myNAME
+COPY demorest-0.0.1-SNAPSHOT.jar /home/demorest-0.0.1-SNAPSHOT.jar
+CMD ["java","-jar","/home/demorest-0.0.1-SNAPSHOT.jar"]
+
+
+5. Build the image using “sudo docker build -t lab8 .”
+
+6. Run the Container “sudo docker run -p 8080:8080 lab8”
+
+7. open postman and use get, post, delete for demonstration.
+
+8. GET: http://localhost:8080/person
+
+9.POST: http://localhost:8080/person
+{
+"name": "",
+"address": ""
+}
+
+10. DELETE: http://localhost:8080/person?name=<>
+
