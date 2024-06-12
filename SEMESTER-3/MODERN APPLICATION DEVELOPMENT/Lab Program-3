@@ -1,0 +1,191 @@
+Ques: Create an app to navigate from one activity to another using an intent object and passing data.
+
+
+program 3
+
+1. move the text view tothe top of page and change content as "Intent"  with id as "textView".
+2. add a plain text and make it id as "editText".
+3. add a button with id "button" and make it's text as "Click".
+4. add the constraint of all above three using constraint widget.
+
+
+x-------------x---------------
+now create a new Layout File
+5. res -> layout(Right Click) -> new -> Activity -> Empty View Activity
+6. change the layout Name as "activity_second".
+7. add a text view here, set constraint, and change it's text as "Activity-2" with id "textView2".
+8. add one more text view , set constraint.with id "textView3".
+
+9. Go back to mainActivity.java file and add code
+
+
+
+x-----------x----------------x-----------
+main_activity.xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Intents"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.117" />
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="101dp"
+        android:layout_marginTop="106dp"
+        android:layout_marginEnd="101dp"
+        android:layout_marginBottom="442dp"
+        android:ems="10"
+        android:inputType="text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="117dp"
+        android:layout_height="58dp"
+        android:layout_marginStart="163dp"
+        android:layout_marginTop="123dp"
+        android:layout_marginEnd="157dp"
+        android:layout_marginBottom="270dp"
+        android:text="Click"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+x---------------x------------------x----------
+MainActivity.java
+
+package com.example.lab3_practice;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+
+public class MainActivity extends AppCompatActivity {
+
+    EditText send_text;
+
+    Button btn;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        send_text = findViewById(R.id.editText);
+        btn = findViewById(R.id.button);
+
+        send_text.requestFocus();
+
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String str = send_text.getText().toString();
+
+                Intent intent = new Intent(getApplicationContext(),SecondActivity.class);
+                intent.putExtra("message",str);
+                startActivity(intent);
+
+
+            }
+        });
+    }
+}
+
+x------------------------------x-----------------------
+activity-second.xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SecondActivity">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="66dp"
+        android:layout_marginTop="82dp"
+        android:layout_marginEnd="87dp"
+        android:layout_marginBottom="574dp"
+        android:text="Activity - 2"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="126dp"
+        android:layout_marginTop="128dp"
+        android:layout_marginEnd="147dp"
+        android:layout_marginBottom="401dp"
+        android:text="TextView"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+x----------------------x---------------------------x---------------
+SecondActivity.java
+
+package com.example.lab3_practice;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.TextView;
+
+public class SecondActivity extends AppCompatActivity {
+
+    TextView text_view;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_second);
+        text_view = findViewById(R.id.textView3);
+
+        Intent intent = getIntent();
+        String str2 = intent.getStringExtra("message");
+        text_view.setText(str2);
+
+    }
+}
