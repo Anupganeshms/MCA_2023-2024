@@ -4,7 +4,6 @@ i)Abstraction, Run Time Polymorphism
 
 //Program-3
 
-
 Question: write a java program to create an abstract class printer and implement all
 the methods using the concrete classes.
 
