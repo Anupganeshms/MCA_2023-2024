@@ -1,4 +1,4 @@
-QUES: Implement overriding concept.
+QUES: Implement overriding concept
 
 
 class Employee:
