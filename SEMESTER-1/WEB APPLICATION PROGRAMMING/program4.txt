@@ -1,4 +1,10 @@
-program4
+QUES: Design a login page to demonstrate following
+a) Display user name and time on successful login
+b) change the background color of the page
+c) validate the username and password using pattern matching in JavaScript
+
+
+//program4
 
 <html>
 <head>
