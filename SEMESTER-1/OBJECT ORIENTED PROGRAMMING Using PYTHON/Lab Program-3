@@ -1,6 +1,7 @@
 Ques: Demonstrate dictionary concepts for a given scenario.
 
 
+
 dict1={}
 class Employee:
         def input(self):
