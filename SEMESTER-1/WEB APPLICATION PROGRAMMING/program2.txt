@@ -1,0 +1,395 @@
+Program2
+
+
+
+
+
+
+
+
+
+
+
+inventory.css
+
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+
+}
+
+body{
+    width: 100%;
+    background: #E5E7EB;
+    position: relative;
+    display: flex;
+    /* background-image: url(images/kiranastore.jpg); */
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    backdrop-filter:1px;
+}
+
+#menu{
+    background-color: #111827;
+    width: 300px;
+    height: 975px;
+}
+
+#menu .logo{
+    display: flex;
+    align-items: center;
+    color: #fff;
+    padding: 30px 0 0 30px;
+}
+
+#menu .logo img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+#menu .items{
+    margin-top: 40px;
+}
+
+#menu .items li{
+    list-style: none;
+    padding: 25px 0 25px 0;
+    text-align: center;
+    color: white;
+}
+
+#menu .items li:hover{
+    background-color:grey;
+    color:pink;
+    cursor: pointer;
+}
+#interface {
+    width: 100%;
+}
+
+#interface .navigation{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: white;
+    padding: 15px 30px;
+    border-bottom: 3px solid #594ef7;
+
+}
+
+#interface .navigation .profile img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid red;
+}
+
+.subheading{
+    color: #444a53;
+    padding: 30px 30px 0px 30px;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.values{
+    padding: 30px 30px 0px 30px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.values .val_box{
+    text-align: center;
+    background-color: white;
+    width: 235px;
+    padding: 16px 20px;
+    border-radius: 1px;
+    border:5px solid red;
+
+}
+
+.values .val_box span{
+    padding-top: 10px;
+
+}
+
+
+#interface .nav{
+    padding-top: 40px;
+}
+
+#interface .nav li{
+    display: inline;
+    padding: 10px 90px 10px 90px;
+    background-color: pink;
+}
+
+#interface .nav li:hover{
+    background-color: gray;
+    color: aqua;
+}
+
+
+#interface .table1 {
+    padding: 50px 0 0 100px;
+
+}
+
+#interface .table1 td{
+    width: 192px;
+    height: 75px;
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+    background-color: antiquewhite;
+
+}
+
+
+
+
+
+
+
+
+
+inventory.html
+
+
+
+
+<!DOCTYPE html> 
+
+<html lang="en"> 
+
+<head> 
+
+<meta charset="UTF-8"> 
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+
+<title>Document</title> 
+
+<link rel="stylesheet" href="inventory.css" > 
+
+
+
+</head> 
+
+<body> 
+
+<section id="menu"> 
+
+<div class="logo"> 
+
+<img src"https://www.google.com/imgres?imgurl=https%3A%2F%2Ffirstquarterfinance.com%2Fwp-content%2Fuploads%2FHard-to-Find-Groceries-by-Aisle-Featured-Image.jpg&tbnid=Jr63ZsyANwlrUM&vet=12ahUKEwiGq5LB1PP9AhVU9XMBHePdCKkQMygFegUIARDJAQ..i&imgrefurl=https%3A%2F%2Ffirstquarterfinance.com%2Flist-of-hard-to-find-groceries-by-aisle%2F&docid=SrMjW-pYxpBEIM&w=1000&h=735&q=item%20find%20in%20gracery%20store&client=ubuntu-sn&ved=2ahUKEwiGq5LB1PP9AhVU9XMBHePdCKkQMygFegUIARDJAQ" > 
+
+<h2>Inventory Store</h2> 
+
+</div> 
+
+<div class="items"> 
+
+<li>Dashboard</li> 
+
+<li>My Order</li> 
+
+<li>Wallet Money</li> 
+
+<li>My Cart</li> 
+
+<li>Cards Saved</li> 
+
+<li>Contacts</li> 
+
+
+
+</div> 
+
+</section> 
+
+<section id="interface"> 
+
+<div class="navigation"> 
+
+<div class="n1"> 
+
+<div class="search"> 
+
+<input type="text" placeholder="Search"> 
+
+</div> 
+
+</div> 
+
+<div class="profile"> 
+
+<img src="images/IMG2.JPG" alt="profile"> 
+
+</div> 
+
+</div> 
+
+
+
+<h3 class="subheading"> 
+
+Dashboard 
+
+</h3> 
+
+<div class="values"> 
+
+<div class="val_box"> 
+
+<h3>8267</h3> 
+
+<span>New User</span> 
+
+</div> 
+
+<div class="val_box"> 
+
+<h3>200521</h3> 
+
+<span>Total Order</span> 
+
+</div> 
+
+<div class="val_box"> 
+
+<h3>215542</h3> 
+
+<span>Production Sell</span> 
+
+</div> 
+
+<div class="val_box"> 
+
+<h3>Rs 67789000/-</h3> 
+
+<span>Total Sale</span> 
+
+</div> 
+
+</div> 
+
+
+
+<div class="nav"> 
+
+<li>Home</li> 
+
+<li>Items</li> 
+
+<li>Payment Option</li> 
+
+<li>About Us</li> 
+
+
+
+</div> 
+
+<div class="table1"> 
+
+<table> 
+
+<tr> 
+
+<td>Serial No.</td> 
+
+<td>Items</td> 
+
+<td>MRP</td> 
+
+<td>Discount(10%)</td> 
+
+<td>Net Amount</td> 
+
+</tr> 
+
+<tr> 
+
+<td>1</td> 
+
+<td>Bakery and Bread</td> 
+
+<td>200</td> 
+
+<td>20</td> 
+
+<td>180</td> 
+
+</tr> 
+
+<tr> 
+
+<td>2</td> 
+
+<td>Rice</td> 
+
+<td>300</td> 
+
+<td>30</td> 
+
+<td>270</td> 
+
+</tr> 
+
+<tr> 
+
+<td>3</td> 
+
+<td>oils,Sauces</td> 
+
+<td>400</td> 
+
+<td>40</td> 
+
+<td>360</td> 
+
+</tr> 
+
+<tr> 
+
+<td>4</td> 
+
+<td>Dal and Flour</td> 
+
+<td>500</td> 
+
+<td>50</td> 
+
+<td>450</td> 
+
+</tr> 
+
+</table> 
+
+</div> 
+
+</section> 
+
+</body> 
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

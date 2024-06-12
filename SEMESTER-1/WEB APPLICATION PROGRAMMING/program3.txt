@@ -1,0 +1,134 @@
+program3
+
+
+
+
+
+
+file1.xml
+
+
+
+<students>
+<student>
+<name>Ashish</name>
+<usn>rv22</usn>
+<ph>98512346</ph>
+<address>begaluru</address>
+</student>
+<student>
+<name>Rahul</name>
+<usn>rv23</usn>
+<ph>8546212660</ph>
+<address>Delhi</address>
+</student>
+</students>
+
+
+
+
+
+
+
+index.html
+
+
+
+
+
+<html>
+<head>
+<title> xml file</title>
+<style>
+</style>
+</head>
+<body>
+<button onclick="createTable()">click me</button>
+<div id="show"></div>
+<script>
+function createTable()
+{
+var sample= new XMLHttpRequest();
+sample.onreadystatechange = function()
+{
+if(this.readyState==4 && this.status==200)
+{
+myFunction(this)
+}
+};
+sample.open("GET","file1.xml",true);
+sample.send();
+
+function myFunction(xml)
+{
+let xmlDoc = xml.responseXML;
+let x = xmlDoc.getElementsByTagName("student");
+let tableBody='<table border=1><tr><td>name</td><td>usn</td><td>ph</td><td>address</td></tr>';
+console.log(x.length);
+for(let i=0;i<x.length;i++)
+{
+tableBody+='<tr>';
+tableBody+='<td>'+x[i].getElementsByTagName("name")[0].childNodes[0].nodeValue+'</td>';
+tableBody+='<td>'+x[i].getElementsByTagName("usn")[0].childNodes[0].nodeValue+'</td>';
+tableBody+='<td>'+x[i].getElementsByTagName("ph")[0].childNodes[0].nodeValue+'</td>';
+tableBody+='<td>'+x[i].getElementsByTagName("address")[0].childNodes[0].nodeValue+'</td>';
+tableBody+='</tr>';
+}
+tableBody += '</table>';
+document.getElementById("show").innerHTML=tableBody;
+}
+}
+</script>
+</body>
+
+
+
+
+
+
+
+
+json.html
+
+
+
+<html>
+<head>
+<title>json</title>
+</head>
+<body>
+<button onclick="jsontable()">clickme</button>
+<div id="show"></div>
+
+<script>
+function jsontable()
+{
+var student=`[
+{
+"name":"ashish",
+"usn":"rv22",
+"ph":"96564256",
+"address":"bengaluru"
+},
+{
+"name":"rahul",
+"usn":"rv23",
+"ph":"5469856",
+"address":"delhi"
+}]`;
+
+var sdata= JSON.parse(student);
+var tableBody='<table border=1><tr><td>name</td><td>usn</td><td>ph</td><td>address</td></tr>';
+sdata.forEach(function(d){
+tableBody+='<tr><td>'+d.name+'</td><td>'+d.usn+'</td><td>'+d.ph+'</td><td>'+d.address+'</td></tr>';
+
+});
+tableBody += '</table>';
+
+document.getElementById("show").innerHTML=tableBody;
+}
+</script>
+</body>
+</html>
+
+

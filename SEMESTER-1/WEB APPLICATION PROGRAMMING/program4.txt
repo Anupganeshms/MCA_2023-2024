@@ -1,0 +1,50 @@
+program4
+
+<html>
+<head>
+<title>login page</title>
+<style></style>
+</head>
+<body>
+<div>
+<form>
+<label for="username">Username</label>
+<input type="text" id="username" name="username" required>
+<label for="password">Password</label>
+<input type="password" id="password" name="password" required>
+
+<button type="button" onclick="login()">click me</button>
+</form>
+</div>
+<script>
+function login()
+{
+const username = document.getElementById("username").value;
+const password = document.getElementById("password").value;
+
+const usernamePattern = /^[a-zA-Z0-9_]{3,16}$/;
+const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%*]).{8,}$/;
+
+if(!username.match(usernamePattern))
+{
+alert("Invalid Username.username should be 3 to 6 chacter long and can contain letters , number , underscore")
+}
+else if(!password.match(passwordPattern))
+{
+alert("Invalid password.Password should be atleast 8 chacter long and should contain letters , number")
+}
+else
+{
+const date = new Date();
+const time = date.toLocaleTimeString();
+
+document.body.innerHTML+=`<div>welcome ${username}. You logged in at ${time}.</div>`;
+
+document.body.style.backgroundColor="lightblue";
+}
+}
+</script>
+</body>
+</html>
+
+
