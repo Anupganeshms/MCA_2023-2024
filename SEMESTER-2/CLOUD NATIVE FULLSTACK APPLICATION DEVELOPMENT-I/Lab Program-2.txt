@@ -4,7 +4,7 @@ QUES: Complete the following:
 3. Import and compile these classes in another program
 
 
-//PROGRAM2
+//Program2
 
 
 // create a package name shape and make 3 program file, write following program for triangle, square,circe
