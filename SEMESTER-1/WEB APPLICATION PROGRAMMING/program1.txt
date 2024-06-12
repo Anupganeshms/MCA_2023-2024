@@ -1,8 +1,11 @@
-program1
+QUES: Design a static web portal using HTML5 semantic elements and Bootstrap of online book stores. The website should consist the pages like. Home page, Registration and user Login, User profile page, Books catalogue, Shopping cart, Payment system, order confirmation.
+
+
+//program1
 
 
 
-index.html
+//index.html
 
 
 
@@ -294,7 +297,7 @@ Address: Bengaluru
 
 
 
-registration.html
+//registration.html
 
 
 
@@ -557,7 +560,7 @@ Address: Bengaluru
 
 
 
-payment.html
+//payment.html
 
 
 
@@ -817,7 +820,7 @@ Address: Bengaluru
 
 
 
-order_confirmation.html
+//order_confirmation.html
 
 
 
@@ -1075,7 +1078,7 @@ Address: Bengaluru
 
 
 
-catalouge.html
+//catalouge.html
 
 
 
