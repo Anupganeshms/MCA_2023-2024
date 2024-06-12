@@ -1,0 +1,118 @@
+﻿Program-7
+
+package lab7;
+
+import java.util.HashMap;
+import java.util.Map;
+
+class Account {
+	private int accountNumber;
+	private String accountHolder;
+	private double initialBalance;
+	
+	public Account(int accountNumber, String accountHolder, double initialBalance) {
+		this.accountNumber = accountNumber;
+		this.accountHolder = accountHolder;
+		this.initialBalance = initialBalance;
+		
+	}
+	
+	public synchronized void withdraw(double amount) {
+		if (initialBalance >= amount) {
+			initialBalance -= amount;
+			System.out.println("withdrawn " + amount + " from account " +accountNumber);
+			System.out.println(" ");
+			
+		}
+		else {
+			System.out.println("insufficient balance from account " + accountNumber);
+			System.out.println(" ");
+		}
+	}
+	
+	public synchronized void deposit(double amount) {
+		initialBalance += amount;
+		System.out.println("Deposited " + amount + " to account " +accountNumber);
+		System.out.println(" ");
+	}
+	
+	
+	public synchronized double getBalance() {
+		return initialBalance;
+	}
+}
+
+class AccountManager {
+	private static final AccountManager INSTANCE = new AccountManager();
+	private Map < Integer, Account > accounts;
+	
+	private AccountManager() {
+		accounts = new HashMap<>();
+	}
+	
+	public static AccountManager getInstance() {
+		return INSTANCE;
+	}
+	
+	public synchronized void createAccount(int accountNumber, String accountHolder, double initialBalance) {
+		Account account = new Account(accountNumber,accountHolder,initialBalance);
+		accounts.put(accountNumber, account);
+		
+	}
+	
+	public synchronized void withdraw(int accountNumber, double amount) {
+		Account account = accounts.get(accountNumber);
+		if (account != null) {
+			account.withdraw(amount);
+		}
+		else {
+			System.out.println("Account Not Found: " + accountNumber);
+			
+		}
+	}
+	
+	public synchronized void deposit(int accountNumber, double amount) {
+		Account account = accounts.get(accountNumber);
+		if (account != null) {
+			account.deposit(amount);
+		}
+		else {
+			System.out.println("Account Not Found: " + accountNumber);
+			
+		}
+	}
+	
+	public synchronized double getBalance(int accountNumber) {
+		Account account = accounts.get(accountNumber);
+		if (account != null) {
+			return account.getBalance();
+		}
+		else {
+			System.out.println("Account Not Found: " + accountNumber);
+			return -1.0;
+			
+		}
+	}
+	
+}
+
+public class Lab7 {
+	public static void main(String[] args) {
+		AccountManager accountManager = AccountManager.getInstance();
+		
+		// create accounts
+		accountManager.createAccount(1,"john Doe",1000.0);
+		accountManager.createAccount(2,"jane smith",2000.0);
+		
+		//perform operations
+		accountManager.withdraw(1,1500.0);
+		accountManager.withdraw(2,1800.0);
+		
+		// get balance
+		System.out.println(" Balance of Account 1: " + accountManager.getBalance(1));
+		System.out.println(" ");
+		System.out.println(" Balance of Account 2: " + accountManager.getBalance(2));
+	}
+
+}
+

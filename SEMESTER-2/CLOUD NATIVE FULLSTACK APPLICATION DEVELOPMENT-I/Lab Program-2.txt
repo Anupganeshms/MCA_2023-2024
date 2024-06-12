@@ -1,0 +1,187 @@
+﻿PROGRAM2
+
+
+// create a package name shape and make 3 program file, write following program for triangle, square,circe
+
+package shape;
+
+public class triangle {
+	protected double area;
+	protected double perimeter;
+	public double side1;
+	public double side2;
+	public double base;
+	protected double height;
+	
+	public triangle(double side1,double side2,double base,double height) {
+		this.side1 = side1;
+		this.side2 = side2;
+		this.base = base;
+		this.height = height;
+	}
+	public double getArea() {
+		this.area = (0.5f*this.base*this.height);
+		return area;
+	}
+	public double getPerimeter() {
+		this.perimeter = (this.side1+this.side2+this.base);
+		return perimeter;
+	}
+
+}
+
+
+
+
+
+
+package shape;
+
+public class square {
+	protected double area;
+	private double perimeter;
+	protected double side;
+	
+	public square(double side) {
+		this.side = side;
+	}
+	public double getArea() {
+		this.area = (this.side*this.side);
+		return area;
+	}
+	public double getPerimeter() {
+		this.perimeter = (4*this.side);
+		return perimeter;
+	}
+
+
+}
+
+
+
+
+
+
+package shape;
+
+public class circle {
+	protected double area;
+	double circumference;
+	protected double radius;
+	
+	public circle(double radius) {
+		this.radius = radius;
+	}
+	public double getArea() {
+		this.area = (3.14f*this.radius*this.radius);
+		return area;
+	}
+	public double getcircumference() {
+		this.circumference = (2*3.14f*this.radius);
+		return circumference;
+	}
+
+
+}
+
+
+
+
+
+
+//make another program and import those three program inside same package and show that protected variable can be accessed
+
+package shape;
+import shape.circle;
+import shape.square;
+import shape.triangle;
+import java.util.Scanner;
+
+public class program2 {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter side1,side2,base,height");
+		double side1 = sc.nextDouble();
+		double side2 = sc.nextDouble();
+		double base = sc.nextDouble();
+		double height = sc.nextDouble();
+		
+		System.out.println("Enter the side of square");
+		double side = sc.nextDouble();
+		
+		System.out.println("Enter the radius of circle");
+		double radius = sc.nextDouble();
+		
+		triangle obj1 = new triangle(side1,side2,base,height);
+		square obj2 = new square(side);
+		circle obj3 = new circle(radius);
+		
+		System.out.println("height of triangle is: "+obj1.height);
+		System.out.println("side of square is: "+obj2.side);
+		System.out.println("radius of circle is: "+obj3.radius);
+		
+		System.out.println("Area of triangle is: "+obj1.getArea());
+		System.out.println("Area of square is: "+obj2.getArea());
+		System.out.println("Area of circle is: "+obj3.getArea());
+		
+		System.out.println("");
+		
+		System.out.println("perimeter of triangle is: "+obj1.getPerimeter());
+		System.out.println("perimeter of square is: "+obj2.getPerimeter());
+		System.out.println("perimeter of circle is: "+obj3.getcircumference());
+
+	}
+
+}
+
+
+
+
+
+
+//import those three program inside different package named ashish and show that protected variable can be accessed
+
+package ashish;
+
+import java.util.Scanner;
+
+import shape.circle;
+import shape.square;
+import shape.triangle;
+
+public class Program {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter side1,side2,base,height");
+		double side1 = sc.nextDouble();
+		double side2 = sc.nextDouble();
+		double base = sc.nextDouble();
+		double height = sc.nextDouble();
+		
+		System.out.println("Enter the side of square");
+		double side = sc.nextDouble();
+		
+		System.out.println("Enter the radius of circle");
+		double radius = sc.nextDouble();
+		
+		triangle obj1 = new triangle(side1,side2,base,height);
+		square obj2 = new square(side);
+		circle obj3 = new circle(radius);
+		
+		//since this is different package, protected variable will not be accessible
+		System.out.println("height of triangle is: "+obj1.height);
+		System.out.println("side of square is: "+obj2.side);
+		System.out.println("radius of circle is: "+obj3.radius);
+		
+		System.out.println("");
+		
+		System.out.println("perimeter of triangle is: "+obj1.getPerimeter());
+		System.out.println("perimeter of square is: "+obj2.getPerimeter());
+		System.out.println("perimeter of circle is: "+obj3.getcircumference());
+
+	}
+
+	
+}
+

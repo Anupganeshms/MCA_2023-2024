@@ -1,0 +1,219 @@
+Program-3
+
+
+3. Write a Java program to demonstrate the concepts
+i) Abstraction ii) Runtime Polymorphism
+
+
+Question: write a java program to create an abstract class printer and implement all
+the methods using the concrete classes.
+
+Step 1: Create a abstract class called the printer with the methods like configuration and display
+Step 2: Create two concrete classes “Dot-matrix” and “LaserJet”. Implement the abstract class
+printer and its methods with respect to the abstract class.
+Step 3: A Main class with a menu driven program for implementing the abstraction
+
+
+
+Expected Output:
+The program should display the details of the Dot-matrix and LaserJet class details with
+an implementation of the abstract class.
+
+
+
+
+2) Runtime polymorphism:
+Example program that showcases runtime polymorphism using a class hierarchy of
+vehicles
+
+
+
+Question: write a java program:
+a. Create a vehicle interface with a concrete class as car and motorcycle to
+implement the vehicle interface methods
+
+b. Demonstrate runtime polymorphism with an abstract class
+
+Step wise Execution Procedure:
+Step 1: Creating abstract class vehicle.
+Step 2: Create method Drive ( )
+Step 3: Create two concrete classes, Car and Motorcycle, which inherit from the
+Vehicle class. Each subclass provides its own implementation of the drive () method
+Step 4: Create Main class, create objects of type Vehicle but instantiate them as Car
+and Motorcycle
+Step 5: Demonstrate the concept of polymorphism
+
+Expected Output:
+The program should display the common interface called from the respective classes.
+
+
+
+
+
+
+
+
+package abstraction;
+
+//Step 1: Create a abstract class called the printer with the methods like configuration and display
+
+
+public abstract class Printer {
+	abstract void configuration();
+	abstract void display();
+
+}
+
+package abstruction;
+
+// Step 2: Create two concrete classes Dot-matrix and LaserJet.
+// Implement the abstract class printer and its methods with respect to the abstract class.
+
+public class DotMatrix extends Printer{
+	@Override
+	void configuration() {
+		System.out.println("Configuration of dotMatrix Printer");
+	}
+	@Override
+	void display() {
+		System.out.println("Display of dotMatrix Printer");
+	}
+}
+
+package abstruction;
+
+// Step 2: Create two concrete classes “Dot-matrix” and “LaserJet”. 
+// Implement the abstract class printer and its methods with respect to the abstract class.
+
+public class LaserJet extends Printer{
+	@Override
+	void configuration() {
+		System.out.println("Configuration of LaserJet  Printer");
+	}
+	@Override
+	void display() {
+		System.out.println("Display of LaserJet  Printer");
+	}
+}
+
+
+
+
+package abstruction;
+import java.util.Scanner;
+
+//write a java program to create an abstract class printer and implement all the methods using the concrete classes.
+public class Program3_i {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        while (true) {
+            System.out.println("Select a printer:");
+            System.out.println("1. Dot-Matrix Printer");
+            System.out.println("2. LaserJet Printer");
+            System.out.println("3. Exit");
+
+            int choice = scanner.nextInt();
+
+            switch (choice) {
+                case 1:
+                    Printer dotMatrixPrinter = new DotMatrix();
+                    dotMatrixPrinter.configuration();
+                    dotMatrixPrinter.display();
+                    break;
+
+                case 2:
+                    Printer laserjetPrinter = new LaserJet();
+                    laserjetPrinter.configuration();
+                    laserjetPrinter.display();
+                    break;
+
+                case 3:
+                    System.out.println("Exiting...");
+                    scanner.close();
+                    return;
+
+                default:
+                    System.out.println("Invalid choice. Please try again.");
+                    break;
+            }
+        }
+    }
+}
+
+package runTimePolymorphism;
+
+// Step 1: Creating abstract class vehicle.
+
+public abstract class Vechile {
+	abstract void drive();
+
+}
+
+package runTimePolymorphism;
+
+// Step 2: Create two concrete classes, Car and Motorcycle, 
+// which inherit from the Vehicle class. Each subclass provides its own implementation of the drive () method
+
+public class Car extends Vechile {
+	@Override
+	void drive() {
+		System.out.println("Car is Driving.");
+	}
+	
+}
+package runTimePolymorphism;
+
+//Step 3: Create two concrete classes, Car and Motorcycle, 
+//which inherit from the Vehicle class. Each subclass provides its own implementation of the drive () method
+
+public class MotarCar extends Vechile {
+	@Override
+	void drive() {
+		System.out.println("MotarCar is Driving.");
+	}
+	
+}
+package runTimePolymorphism;
+
+import java.util.Scanner;
+
+// Step 4: Create Main class, create objects of type Vehicle but instantiate them as Car and Motorcycle
+
+public class Program3_ii {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        while (true) {
+            System.out.println("Select a printer:");
+            System.out.println("1. Car Vechile");
+            System.out.println("2. MotrarCar Vechile");
+            System.out.println("3. Exit");
+
+            int choice = scanner.nextInt();
+
+            switch (choice) {
+                case 1:
+                	Vechile obj1 = new Car();
+                    obj1.drive();
+                    break;
+
+                case 2:
+                	Vechile obj2 = new MotarCar();
+                    obj2.drive();
+                    break;
+
+                case 3:
+                    System.out.println("Exiting...");
+                    scanner.close();
+                    return;
+
+                default:
+                    System.out.println("Invalid choice. Please try again.");
+                    break;
+            }
+        }
+    }
+}
+
+

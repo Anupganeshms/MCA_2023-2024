@@ -1,0 +1,80 @@
+﻿Program4
+
+// this program has 2 part 4.1,4.2
+
+
+//PART-1
+
+package player;
+
+public class Program4_1 {
+
+}
+interface MediaPlayer {
+	public void play (String filename);
+}
+interface AdvanceMediaPlayer {
+	public void playfile (String filename);
+}
+
+class mp3player implements MediaPlayer {
+	@Override
+	public void play(String filename) {
+		System.out.println("Playing Mp3 file" + filename);
+	}
+}
+
+
+class mp4player implements AdvanceMediaPlayer {
+	@Override
+	public void playfile(String filename) {
+		System.out.println("Playing Mp4 file" + filename);
+	}
+}
+
+class VLCplayer implements AdvanceMediaPlayer {
+	@Override
+	public void playfile(String filename) {
+		System.out.println("Playing VLC file" + filename);
+	}
+}
+
+
+class MediaPlayerAdapter implements MediaPlayer {
+	private AdvanceMediaPlayer advancedMediaPlayer;
+		 
+	public MediaPlayerAdapter(AdvanceMediaPlayer advancedMediaPlayer) {
+		this.advancedMediaPlayer = advancedMediaPlayer;
+	}
+	@Override
+	public void play (String filename) {
+		System.out.print("Using MediaPlayerAdapter - ");
+		advancedMediaPlayer.playfile(filename);
+	}
+}
+
+
+
+
+
+
+
+//PART-2
+
+package player;
+
+public class Program4_2 {
+	public static void main (String args[]) {
+		MediaPlayer player = new mp3player();
+		player.play("testmp3file.mp3");
+		
+		player = new MediaPlayerAdapter (new mp4player());
+		player.play("testmp4file.mp4");
+		
+		player = new MediaPlayerAdapter (new VLCplayer());
+		player.play("testvlcfile.avi");
+	}
+	
+
+}
+

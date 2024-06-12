@@ -1,0 +1,187 @@
+package com.rest;
+
+
+
+public class Product {
+
+
+
+	public String getName() {
+
+		return name;
+
+	}
+
+	public void setName(String name) {
+
+		this.name = name;
+
+	}
+
+	public int getId() {
+
+		return id;
+
+	}
+
+	public void setId(int id) {
+
+		this.id = id;
+
+	}
+
+	String name;
+
+	int id;
+
+}
+
+
+
+
+
+package com.rest;
+
+
+
+import javax.ws.rs.Consumes;
+
+import javax.ws.rs.GET;
+
+import javax.ws.rs.POST;
+
+import javax.ws.rs.Path;
+
+import javax.ws.rs.Produces;
+
+
+
+
+
+@Path("/json/service")
+
+
+
+public class JSONService {
+
+	@GET
+
+	@Path("/get")
+
+	@Produces("application/json")
+
+
+
+	public Product getApplication() {
+
+		Product p=new Product();
+
+		p.setName("nemo");
+
+		p.setId(1);
+
+		return p;
+
+}
+
+	@POST
+
+	@Path("/post")
+
+	@Consumes("application/json")
+
+	public void postApplication(Product p)
+
+	{
+
+		System.out.println(p.getName()+" "+p.getId());
+
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<context-param>
+		<param-name>resteasy.resources</param-name>
+		<param-value>com.rest.JSONService</param-value>
+	</context-param>
+
+	<listener>
+		<listener-class>
+			org.jboss.resteasy.plugins.server.servlet.ResteasyBootstrap</listener-class>
+	</listener>
+	<servlet>
+		<servlet-name>resteasy-servlet</servlet-name>
+		<servlet-class>
+			org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>resteasy-servlet</servlet-name>
+		<url-pattern>/*</url-pattern>
+	</servlet-mapping>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<repositories>
+		<repository>
+			<id>JBoss repository</id>
+			<url>https://repository.jboss.org/nexus/content/groups/public-jboss/</url>
+		</repository>
+	</repositories>
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.8.2</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jboss.resteasy</groupId>
+			<artifactId>resteasy-jaxrs</artifactId>
+			<version>2.2.1.GA</version>
+		</dependency>
+		<!-- <dependency> <groupId>org.jboss.resteasy</groupId> <artifactId>resteasy-jaxb-provider</artifactId> 
+			<version>2.2.0.GA</version> </dependency> -->
+		<dependency>
+			<groupId>org.jboss.resteasy</groupId>
+			<artifactId>resteasy-jackson-provider</artifactId>
+			<version>2.2.1.GA</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>4.1.1</version>
+		</dependency>
+	</dependencies> 

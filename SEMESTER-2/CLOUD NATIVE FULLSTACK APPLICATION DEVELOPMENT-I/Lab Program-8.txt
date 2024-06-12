@@ -1,0 +1,104 @@
+package Main;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Scanner;
+
+class UpperBoundWildcard<T extends Number> {
+    private List<T> numbers = new ArrayList<>();
+
+    public void addNumber(T number) {
+        numbers.add(number);
+    }
+
+    public double sum() {
+        double sum = 0;
+        for (T number : numbers) {
+            sum += number.doubleValue();
+        }
+        return sum;
+    }
+
+    public void sort() {
+        Collections.sort(numbers, (a, b) -> Double.compare(a.doubleValue(), b.doubleValue()));
+    }
+
+    public List<T> getNumbers() {
+        return numbers;
+    }
+    public void clear() {
+    	numbers=new ArrayList<T>();
+    }
+}
+
+
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        UpperBoundWildcard<Double> doubleArray= new UpperBoundWildcard<>();
+        UpperBoundWildcard<Integer> integerArray= new UpperBoundWildcard<>();
+        
+        
+        while (true) {
+        	int typeChoice=0;
+        	System.out.println("\n choose 1 to work with int datatype and 2 for double datatpye");
+        	typeChoice=scanner.nextInt();
+        	
+        	if(typeChoice>2 && typeChoice<1) {
+        		System.out.println("you failed the test , you were only supposed to enter either 1 or 2 ");
+        	}
+        	boolean exit=false;
+        	while (!exit) {
+        		System.out.println("\nMenu:");
+                System.out.println("1. Add numbers");
+                System.out.println("2. Calculate sum");
+                System.out.println("3. Sort numbers");
+                System.out.println("4. Exit to choose different datatype");
+                System.out.print("Enter your choice: ");
+
+                int choice = scanner.nextInt();
+
+                switch (choice) {
+                    case 1:
+                    	System.out.println("enter the number of elements");
+                    	int n=scanner.nextInt();
+                    	integerArray.clear();
+                    	doubleArray.clear();
+                        for(int i=0;i<n;i++) {
+    	                    if (typeChoice==1) {
+    	                    	integerArray.addNumber(scanner.nextInt());
+    	                    } else {
+    	                    	doubleArray.addNumber(scanner.nextDouble());
+    	                    }
+                        }
+                        break;
+                    case 2:
+                    	if(typeChoice==1) {
+                    		System.out.println("Sum of numbers: " + integerArray.sum());
+                    	}else {
+                    		System.out.println("Sum of numbers: " + doubleArray.sum());
+                    	}
+                        break;
+                    case 3:
+                    	if(typeChoice==1) {
+                    		integerArray.sort();
+                    		System.out.println("Sorted numbers: " + integerArray.getNumbers());
+                    	}else {
+                    		doubleArray.sort();
+                    		System.out.println("Sorted numbers: " + doubleArray.getNumbers());
+                    	}
+                        break;
+                    case 4:
+                        System.out.println("Exiting program");
+                        exit=true;
+                        
+                    default:
+                        System.out.println("Invalid choice. Please try again.");
+                }
+        	}
+            
+        }
+    }
+}
