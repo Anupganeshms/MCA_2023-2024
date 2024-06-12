@@ -1,5 +1,5 @@
-QUES:Design, Create and Implement the relational databases for any one of the Domains like Tourism, Human Resource Management, Debris Management and Others.
-//Note: Minimum Six (6) Queries to be executed including nested queries 
+QUES: Design, Create and Implement the relational databases for any one of the Domains like Tourism, Human Resource Management, Debris Management and Others.
+//Note: Minimum Six (6) Queries to be executed including nested queries.
 
 
 create table if not exists Employee (F_name varchar(50),M_name varchar(50),L_name varchar(50),Gender varchar(50),Emp_ssn int,Salary decimal,Dob date,Address varchar(50) , Hours varchar(50),D_no int,Super_ssn int, primary key (Emp_ssn));
