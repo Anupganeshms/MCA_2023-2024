@@ -1,6 +1,7 @@
 QUES: Demonstrate basic trouble shooting using ping, traceroute, ifconfig, nslookup, netstat, pathping and route
 
 
+
 sudo apt-get install net-tools
 sudo apt-get install traceroute
 sudo ifconfig
