@@ -1,6 +1,7 @@
 QUES: Demonstrate multiple client server communication on different ports using netcat.
 
 
+
 sudo apt-get install netcat
 sudo ifconfig
 sudo systemctl stop NetworkManager
