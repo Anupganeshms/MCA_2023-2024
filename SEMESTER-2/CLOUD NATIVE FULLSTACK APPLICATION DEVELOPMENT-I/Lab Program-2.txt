@@ -1,4 +1,10 @@
-﻿PROGRAM2
+QUES: Complete the following:
+1. Create a package named shape.
+2. Create some classes in the package representing some common shapes like Square, Triangle, and Circle.
+3. Import and compile these classes in another program
+
+
+//PROGRAM2
 
 
 // create a package name shape and make 3 program file, write following program for triangle, square,circe
