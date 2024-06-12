@@ -1,6 +1,7 @@
 QUES: Demonstrate to calculate IP addresses using ipcalc.
 
 
+
 //FOR THIS PROGRAM WE NOT NEED SWITCH, WE CAN DO THIS INDIVIDUALLY ON OUR OWN SYSTEM.
 
 sudo apt-get install ipcalc
