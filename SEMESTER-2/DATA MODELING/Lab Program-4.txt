@@ -1,0 +1,553 @@
+db.patient.insertMany([
+  {
+    ssn: 'M001',
+    name: 'Rajeshwari',
+    address: 'Chennai',
+    age: '25',
+    doctors: [ 'D001', 'D002' ],
+    prescription: [ '1', '3' ]
+  },
+  {
+    ssn: 'M002',
+    name: 'Ganesh',
+    address: 'Chennai',
+    age: '29',
+    doctors: [ 'D004' ],
+    prescription: [ '2' ]
+  },
+  {
+    ssn: 'M003',
+    name: 'Karthik',
+    address: 'Coimbatore',
+    age: '21',
+    doctors: [ 'D003', 'D005' ],
+    prescription: [ '2', '3' ]
+  },
+  {
+    ssn: 'M004',
+    name: 'Krishna',
+    address: 'Mysuru',
+    age: '22',
+    doctors: [ 'D006' ],
+    prescription: [ '5' ]
+  },
+  {
+    ssn: 'M005',
+    name: 'Saraswathi',
+    address: 'Mysuru',
+    age: '22',
+    doctors: [ 'D006', 'D001' ],
+    prescription: [ '4', '5' ]
+  },
+  {
+    ssn: 'M006',
+    name: 'Sundaram',
+    address: 'Kochi',
+    age: '23',
+    doctors: [ 'D002' ],
+    prescription: [ '2', '3' ]
+  },
+  {
+    ssn: 'M007',
+    name: 'Meenakshi',
+    address: 'Chennai',
+    age: '20',
+    doctors: [ 'D003' ],
+    prescription: [ '5' ]
+  },
+  {
+    ssn: 'M008',
+    name: 'Lakshmi',
+    address: 'Chennai',
+    age: '20',
+    doctors: [ 'D001', 'D003' ],
+    prescription: [ '2' ]
+  }
+]);
+  
+
+
+
+
+
+
+
+db.doctor.insertMany([
+  {
+    ssn: 'D001',
+    name: 'Venkatesh',
+    address: 'Mysuru',
+    speciality: 'eye',
+    patients: [ 'M001', 'M003' ],
+    prescription: [ '1', '2' ],
+    years_of_experience: '20'
+  },
+  {
+    ssn: 'D002',
+    name: 'Ramesh',
+    address: 'Kochi',
+    speciality: 'bone',
+    patients: [ 'M004' ],
+    prescription: [ '3' ],
+    years_of_experience: '10'
+  },
+  {
+    ssn: 'D003',
+    name: 'Srinivasan',
+    address: 'Kochi',
+    speciality: 'brain',
+    patients: [ 'M006', 'M001', 'M002' ],
+    prescription: [ '1', '2' ],
+    years_of_experience: '2'
+  },
+  {
+    ssn: 'D004',
+    name: 'Prakash',
+    address: 'Hyderabad',
+    speciality: 'heart',
+    patients: [ 'M005' ],
+    prescription: [ '3', '5' ],
+    years_of_experience: '12'
+  },
+  {
+    ssn: 'D005',
+    name: 'Nandini',
+    address: 'Mysuru',
+    speciality: 'heart',
+    patients: [ 'M003', 'M007' ],
+    prescription: [ '4' ],
+    years_of_experience: '5'
+  },
+  {
+    ssn: 'D006',
+    name: 'Arvind',
+    address: 'Coimbatore',
+    speciality: 'kidney',
+    patients: [ 'M002', 'M003' ],
+    prescription: [ '2', '3', '4', [ '12', '13' ] ],
+    years_of_experience: '7'
+  },
+  {
+    ssn: 'D007',
+    name: 'Sample Doctor',
+    address: 'Sample Address',
+    speciality: 'Sample Speciality',
+    patients: [],
+    prescription: [],
+    years_of_experience: '10'
+  }
+]);
+
+
+
+
+
+
+
+db.p_company.insertMany([
+  {
+    name: 'G',
+    address: 'Chennai',
+    ph: '4534234490'
+  },
+  {
+    name: 'H',
+    address: 'Mysuru',
+    ph: '4534234440'
+  },
+  {
+    name: 'I',
+    address: 'Chennai',
+    ph: '4534334490'
+  },
+  {
+    name: 'J',
+    address: 'Mysuru',
+    ph: '4537234490'
+  },
+  {
+    name: 'K',
+    address: 'Kochi',
+    ph: '4524234490'
+  },
+  {
+    name: 'L',
+    address: 'Coimbatore',
+    ph: '4531234490'
+  },
+  {
+    name: 'Sample Company',
+    address: 'Sample Address',
+    ph: '1234567890'
+  },
+  {
+    name: 'G',
+    address: 'Chennai',
+    phone_number: '4534234490'
+  }
+]);
+
+
+
+
+
+
+
+
+
+
+db.drug.insertMany([
+  {
+    t_name: '7XYZ',
+    f: '1ab',
+    p_company: 'G'
+  },
+  {
+    t_name: '8XYZ',
+    f: '1ac',
+    p_company: 'H'
+  },
+  {
+    t_name: '9XYZ',
+    f: '2ab',
+    p_company: 'I'
+  },
+  {
+    t_name: '10XYZ',
+    f: '3ab',
+    p_company: 'J'
+  },
+  {
+    t_name: '11XYZ',
+    f: '4ab',
+    p_company: 'K'
+  },
+  {
+    t_name: '12XYZ',
+    f: '5ab',
+    p_company: 'L'
+  }
+]);
+
+
+
+
+
+
+
+
+db.pharmacy.insertMany([
+  {
+    name: 'MN',
+    address: 'Chennai',
+    ph: '4534234490',
+    drug: [ { drug_name: '12XYZ', price: '100' } ]
+  },
+  {
+    name: 'OP',
+    address: 'Mysuru',
+    ph: '4534234440',
+    drug: [ { drug_name: '8XYZ', price: '50' } ]
+  },
+  {
+    name: 'QR',
+    address: 'Chennai',
+    ph: '4534334490',
+    drug: [ { drug_name: '11XYZ', price: '100' } ]
+  },
+  {
+    name: 'ST',
+    address: 'Mysuru',
+    ph: '4537234490',
+    drug: [ { drug_name: '10XYZ', price: '120' } ]
+  },
+  {
+    name: 'UV',
+    address: 'Kochi',
+    ph: '4524234490',
+    drug: [
+      { drug_name: '8XYZ', price: '200' },
+      { drug_name: '10XYZ', price: '150' }
+    ]
+  },
+  {
+    name: 'WX',
+    address: 'Coimbatore',
+    ph: '4531234490',
+    drug: [ { drug_name: '7XYZ', price: '100' } ]
+  },
+  {
+    name: 'AB',
+    address: 'Chennai',
+    ph: '4534234490',
+    drug: [ { drug_name: '7XYZ', price: '100' } ]
+  }
+]);
+
+
+
+
+
+
+
+
+db.assistant.insertMany([
+  {
+    ssn: 'AS001',
+    name: 'Gayathri',
+    address: 'Mysuru',
+    yoe: '10',
+    wards: [ 'general', 'icu', 'op-theatre' ]
+  },
+  {
+    ssn: 'AS002',
+    name: 'Rajendran',
+    address: 'Chennai',
+    yoe: '10',
+    wards: [ 'icu', 'op-theatre' ]
+  },
+  {
+    ssn: 'AS003',
+    name: 'Divya',
+    address: 'Coimbatore',
+    yoe: '2',
+    wards: [ 'general' ]
+  },
+  {
+    ssn: 'AS004',
+    name: 'Prabhu',
+    address: 'Hyderabad',
+    yoe: '12',
+    wards: [ 'icu' ]
+  },
+  {
+    ssn: 'AS005',
+    name: 'Manjunath',
+    address: 'Kochi',
+    yoe: '5',
+    wards: [ 'general', 'icu' ]
+  },
+  {
+    ssn: 'AS006',
+    name: 'Girish',
+    address: 'Bangalore',
+    yoe: '7',
+    wards: []
+  }
+]);
+
+
+
+
+db.prescription.insertMany([
+  {
+    id: '6',
+    date: '2023-09-11',
+    q: '4',
+    doctor_id: 'D001',
+    patient_id: 'M001',
+    drug_name: [ '7XYZ', '8XYZ' ]
+  },
+  {
+    id: '7',
+    date: '2013-09-12',
+    q: '7',
+    doctor_id: 'D002',
+    patient_id: 'M002',
+    drug_name: [ '9XYZ', '10XYZ' ]
+  },
+  {
+    id: '8',
+    date: '2023-09-11',
+    q: '10',
+    doctor_id: 'D003',
+    patient_id: 'M003',
+    drug_name: [ '11XYZ' ]
+  },
+  {
+    id: '9',
+    date: '2013-09-12',
+    q: '2',
+    doctor_id: 'D004',
+    patient_id: 'M004',
+    drug_name: [ '7XYZ', '12XYZ' ]
+  },
+  {
+    id: '10',
+    date: '2013-09-12',
+    q: '6',
+    doctor_id: 'D005',
+    patient_id: 'M005',
+    drug_name: [ '7XYZ', '8XYZ', '12XYZ' ]
+  },
+  {
+    id: '11',
+    date: '2013-01-01',
+    q: '8',
+    doctor_id: 'D001',
+    patient_id: 'M003',
+    drug_name: [ '7XYZ', '8XYZ' ]
+  },
+  {
+    id: '12',
+    date: '2013-09-10',
+    q: '3',
+    doctor_id: 'D006',
+    patient_id: 'M008',
+    drug_name: [ '13XYZ', '14XYZ', '15XYZ' ]
+  },
+  {
+    id: '13',
+    date: '2013-09-11',
+    q: '5',
+    doctor_id: 'D006',
+    patient_id: 'M009',
+    drug_name: [ '16XYZ', '17XYZ', '18XYZ' ]
+  },
+  {
+    id: '14',
+    date: '2013-09-15',
+    q: '5',
+    doctor_id: 'D007',
+    patient_id: 'M010',
+    drug_name: [ '19XYZ', '20XYZ' ]
+  },
+  {
+    id: '15',
+    date: '2013-09-15',
+    q: '5',
+    doctor_id: 'D006',
+    patient_id: 'M003',
+    drug_name: [ '20XYZ', '20XYZ' ]
+  }
+]);
+   
+
+
+
+db.contract.insertMany([
+  {
+    s_date: '2021-01-01',
+    e_date: '2024-01-01',
+    p_company: '',
+    pharmacy: '',
+    supervisor: '',
+    text: ''
+  },
+  {
+    s_date: '2022-02-12',
+    e_date: '2024-03-13',
+    p_company: '',
+    pharmacy: '',
+    supervisor: '',
+    text: ''
+  },
+  {
+    s_date: '2021-11-12',
+    e_date: '2023-12-01',
+    p_company: '',
+    pharmacy: '',
+    supervisor: '',
+    text: ''
+  },
+  {
+    s_date: '2021-02-17',
+    e_date: '2024-04-18',
+    p_company: '',
+    pharmacy: '',
+    supervisor: '',
+    text: ''
+  },
+  {
+    s_date: '2021-12-12',
+    e_date: '2024-7-23',
+    p_company: '',
+    pharmacy: '',
+    supervisor: '',
+    text: ''
+  },
+  {
+    s_date: '2019-10-12',
+    e_date: '2025-12-12',
+    p_company: '',
+    pharmacy: '',
+    supervisor: '',
+    text: ''
+  }
+]);
+
+i) List the details of patients who are 20 years old and have been checked by an eye specialist:
+
+db.patient.find({
+  age: "20",
+  doctors: { $in: ["D001"] }
+})
+
+
+ii)
+db.prescription.aggregate([
+  {
+    $match: {
+      date: {
+        $gte: '2013-01-01',
+        $lt: '2014-01-01'
+      }
+    }
+  },
+  {
+    $group: {
+      _id: "$doctor_id",
+      totalPatients: { $addToSet: "$patient_id" }
+    }
+  },
+  {
+    $project: {
+      _id: 1,
+      totalPatients: { $size: "$totalPatients" }
+    }
+  },
+  {
+    $match: {
+      totalPatients: { $gt: 2 }
+    }
+  }
+])
+
+
+iii) Retrieve the details of the doctor with the maximum experience.
+
+db.doctor.find().sort({ yoe: -1 }).limit(1)
+
+
+iv) List the details of pharmaceutical companies who supply drug to more than 10 pharmacies in the same city where company is located.
+
+db.p_company.aggregate([
+  {
+    $lookup: {
+      from: "pharmacy",
+      localField: "address",
+      foreignField: "address",
+      as: "pharmacies"
+    }
+  },
+  {
+    $match: {
+      $expr: { $gt: [{ $size: "$pharmacies" }, 2] }
+    }
+  }
+])
+
+
+v). List the details of healthcare assistants who serve in the operation theatre.
+db.assistant.find({
+  wards: "op-theatre"
+})
+
+
+vi) List the details of drugs supplied by all pharmaceutical companies.
+
+db.drug.find()
+
+//OR
+
+db.p_company.aggregate([ { $lookup: { from: "drug", localField: "t_name", foreignField: "name", as: "drug" } }, { $unwind: "$drug" }, { $project: { "name": 1, "drugs.t_name": 1, "drugs.formula": 1 } }]);

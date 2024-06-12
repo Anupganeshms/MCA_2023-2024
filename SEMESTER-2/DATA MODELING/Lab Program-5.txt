@@ -1,0 +1,61 @@
+import pymongo
+
+# Connect to MongoDB
+client = pymongo.MongoClient("mongodb://localhost:27017/")
+db = client["lab5"]
+collection = db["mycollection"]
+
+def create_record():
+    name = input("Enter name: ")
+    age = int(input("Enter age: "))
+    record = {"name": name, "age": age}
+    result = collection.insert_one(record)
+    print(f"Record with _id {result.inserted_id} created successfully!")
+
+def read_records():
+    records = collection.find()
+    for record in records:
+        print(record)
+
+def update_record():
+    old_name = input("Enter the name of the record to update: ")
+    new_age = int(input("Enter the new age: "))
+    result = collection.update_one({"name": old_name}, {"$set": {"age": new_age}})
+    if result.modified_count > 0:
+        print("Record updated successfully!")
+    else:
+        print("No records matched the query.")
+
+def delete_record():
+    name = input("Enter the name of the record to delete: ")
+    result = collection.delete_one({"name": name})
+    if result.deleted_count > 0:
+        print("Record deleted successfully!")
+    else:
+        print("No records matched the query.")
+
+while True:
+    print("\nMenu:")
+    print("1. Create Record")
+    print("2. Read Records")
+    print("3. Update Record")
+    print("4. Delete Record")
+    print("5. Exit")
+    
+    choice = input("Enter your choice: ")
+    
+    if choice == "1":
+        create_record()
+    elif choice == "2":
+        read_records()
+    elif choice == "3":
+        update_record()
+    elif choice == "4":
+        delete_record()
+    elif choice == "5":
+        break
+    else:
+        print("Invalid choice. Please select a valid option.")
+
+# Close the MongoDB connection
+client.close()

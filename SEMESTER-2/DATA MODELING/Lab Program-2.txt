@@ -1,0 +1,71 @@
+create table Solar_Panel(panel_no varchar(10) primary key,pv_type varchar(10),capacity varchar(10),i_charge varchar(10));
+create table Distribution(tin_no varchar(10) primary key,name varchar(20),address varchar(200),contact int(15));
+create table User(user_no varchar(20) primary key, u_name varchar(10),u_address varchar(20));
+CREATE TABLE Install (panel_no varchar(10),tin_no varchar(10),user_no VARCHAR(20),i_type VARCHAR(20),i_date DATE,charge bigint(10),PRIMARY KEY (panel_no, tin_no, user_no),FOREIGN KEY (panel_no) REFERENCES Solar_Panel(panel_no),FOREIGN KEY (tin_no) REFERENCES Distribution(tin_no),FOREIGN KEY (user_no) REFERENCES User(user_no) );
+
+create table Sells(panel_no varchar(20),tin_no varchar(10),primary key(panel_no,tin_no),foreign key(panel_no)references Solar_Panel(panel_no),foreign key(tin_no) references Distribution(tin_no));
+create table Purchased(panel_no varchar(10),user_no varchar(10),primary key(panel_no,user_no),foreign key(panel_no) references Solar_Panel(panel_no),foreign key(user_no) references User(user_no));
+
+show tables;
+
+INSERT INTO Solar_Panel (panel_no, pv_type, capacity, i_charge)
+VALUES
+    (1, 'monocryst', 500, 10000),
+    (2, 'polycryst', 1000, 20000),
+    (3, 'monocryst', 2000, 30000),
+    (4, 'polycryst', 3000, 40000),
+    (5, 'monocryst', 4000, 50000),
+    (6, 'monocryst', 400000, 50000);
+
+
+INSERT INTO Distribution (tin_no, name, address, contact)
+VALUES
+    ('1', 'Srijith', 'SVP', 94375476),
+    ('2', 'Yogesh', 'SVP', 94475476),
+    ('3', 'Udith', 'SBP', 99975476);
+    
+INSERT INTO User (user_no, u_name, u_address)
+VALUES
+    ('1', 'Jaga', 'GN'),
+    ('2', 'Vathsa', 'MP'),
+    ('3', 'Sindhu', 'SI');
+    
+insert into Install values(1,1,1,'domestic','2021-01-20',15000);
+insert into Install values(2,2,2,'Commercial','2021-02-21',20000);
+insert into Install values(3,3,3,'Commercial','2022-02-22',30000);
+insert into Install values(1,2,3,'Domestic','2022-05-04',40000);
+select* from install;
+
+insert into Sells values(1,1);
+insert into Sells values(2,2);
+insert into Sells values(1,2);
+
+
+insert into Purchased values(1,1);
+insert into Purchased values(2,2);
+insert into Purchased values(3,3);
+insert into Purchased values(1,3);
+
+/*1*/
+select count(p.panel_no),d.tin_no from Solar_Panel p,Distribution d,Install i where i.panel_no=p.panel_no and i.tin_no=d.tin_no and i.i_type='domestic' group by d.tin_no limit 1;    
+
+/*2*/
+select u.u_address from User u,Install i,Solar_Panel p where u.user_no=i.user_no and p.panel_no=i.panel_no and p.i_charge=(select max(i_charge) from Solar_Panel);
+
+/*3*/
+select u.u_address from User u,Install i,Solar_Panel p where u.user_no=i.user_no and p.panel_no=i.panel_no and p.pv_type='monocryst';
+
+/*4*/
+select u.u_address as ADDRESS, SUM(i.charge) as TOTAL from User u, Install i,Solar_Panel p where u.user_no = i.user_no and p.panel_no=i.panel_no and p.pv_type="polycryst" and EXISTS (select u.u_address from User u, Install i,Solar_Panel p where u.user_no=i.user_no and p.pv_type="monocryst") group by u.u_address;
+
+/*5*/
+select d.name, count(d.tin_no) from Distribution d join Install i on d.tin_no = i.tin_no join Solar_Panel p on p.panel_no = i.panel_no where i.i_date = (select min(i_date) from Install) group by d.name;
+
+/*6*/
+SELECT p.pv_type, SUM(i.charge) / (
+         SELECT COUNT(*) FROM Install WHERE i_type='Commercial'
+     ) AS avg_charge
+     FROM Solar_Panel p
+     JOIN Install i ON p.panel_no = i.panel_no
+     WHERE i.i_type = 'Commercial'
+     GROUP BY p.pv_type;

@@ -1,0 +1,142 @@
+create table if not exists Employee (F_name varchar(50),M_name varchar(50),L_name varchar(50),Gender varchar(50),Emp_ssn int,Salary decimal,Dob date,Address varchar(50) , Hours varchar(50),D_no int,Super_ssn int, primary key (Emp_ssn));
+select * from Employee;
+
+create table if not exists Department (D_name varchar(50),D_no int ,Super_ssn int,Doj date , primary key (D_no));
+select * from Department;
+
+alter table Employee add foreign key (D_no) references Department (D_no) ,add foreign key (Super_ssn) references Employee (Emp_ssn);
+desc Employee;
+
+alter table Department add foreign key (Super_ssn) references Employee (Super_ssn);
+desc Department;
+
+Create table if not exists Deparment_location (Department_location varchar(50),D_no int,foreign key (D_no) references Department (D_no), primary key (Department_location,D_no));
+select * from Deparment_location;
+
+create table if not exists Project (P_name varchar(50),P_no int,D_no int,Emp_ssn int,Budjet varchar(50),P_startdate date,P_enddate date, primary key (P_no),foreign key (Emp_ssn) references Employee (Emp_ssn), foreign key (D_no) references Department (D_no));
+select * from Project;
+desc Project;
+
+Create table if not exists Project_location (Location varchar(50),P_no int,foreign key (P_no) references Project (P_no), primary key (Location,P_no));
+select * from Project_location;
+desc Project_location;
+
+create table if not exists Dependent (Dependent_name varchar(50),Emp_ssn int,Dependent_biodata varchar(50),Dependent_gender varchar(50),Relationship varchar(50),foreign key (Emp_ssn) references Employee (Emp_ssn),primary key(Dependent_name,Emp_ssn));
+select * from Dependent;
+desc Dependent;
+
+create table if not exists Work_on (Emp_ssn int,P_no int,Hours varchar(50),foreign key (Emp_ssn) references Employee (Emp_ssn),foreign key (P_no) references Project (P_no),primary key(Emp_ssn,P_no));
+select * from Work_on;	
+desc Work_on;
+
+insert into Employee values
+('Sachin',null,'Garg','Male',101,1000000,'1990-01-01','kengiri','8 hrs',null,null),
+('Ajay',null,'Garg','Male',102,1500000,'1990-01-01','kengiri','8 hrs',null,null),
+('Anuj','sp','Gupta','Male',103,1155000,'1990-01-01','vijayNagar','8 hrs',null,null),
+('Lalit',null,'mittal','Male',104,1155000,'1990-01-01','AshokNagar','8 hrs',null,null),
+('Rajeev',null,'Goel','Male',105,1500000,'1990-01-01','shahdara','8 hrs',null,null);
+
+insert into Department values 
+('Finance Department',201,null,'2014-04-01'),
+('R&D Department',202,null,'2005-04-01'),
+('Development Department',203,null,'2014-04-01'),
+('Network Department',204,null,'2010-04-01');
+
+UPDATE Employee SET D_no = 201,Super_ssn = 103 WHERE Emp_ssn = 101;
+UPDATE Employee SET D_no = 201,Super_ssn = 103 WHERE Emp_ssn = 102;
+UPDATE Employee SET D_no = 202,Super_ssn = 105 WHERE Emp_ssn = 103;
+UPDATE Employee SET D_no = 201,Super_ssn = 103 WHERE Emp_ssn = 104;
+UPDATE Employee SET D_no = 201,Super_ssn = 103 WHERE Emp_ssn = 105;
+
+UPDATE Department SET Super_ssn = 103 WHERE D_no = 201;
+UPDATE Department SET Super_ssn = 105 WHERE D_no = 202;
+
+insert into Deparment_location values ('1st floor',201),
+('1st floor',202),
+('1st floor',203),
+('3rd floor',204);
+
+insert into Project values 
+('p1',301,201,101,1100000,'2015-04-01','2025-03-31'),
+('p2',302,202,103,1200000,'2010-02-01','2018-03-31'),
+('p3',303,201,101,200000,'2016-04-01','2026-03-31'),
+('p4',304,202,103,900000,'2015-01-01','2021-02-28'),
+('p5',305,201,101,50000,'2016-04-01','2024-05-31'),
+('p6',306,202,103,1500000,'2012-01-01','2022-01-31');
+
+
+insert into Project_location values 
+('Bangalore',301),
+('Delhi',301),
+('Chennai',303),
+('Chennai',304),
+('Gurugram',305);
+
+
+insert into Dependent values 
+('Rishabh',101,'987456321','Male','Son'),
+('Abhinav',102,'987456789','Male','Son'),
+('Aaradhya',101,'987456123','Female','Wife'),
+('Ayushi',105,'987456156','Female','Wife'),
+('Piyush',104,'987456123','Male','Son');
+
+insert into Work_on values 
+(101,301,'8 hrs'),
+(103,302,'8 hrs'),
+(101,303,'8 hrs'),
+(103,304,'6 hrs'),
+(101,305,'5 hrs'),
+(104,306,'8 hrs');
+
+/(i)/
+SELECT e.F_Name, e.L_Name, d.D_name
+FROM Employee e
+JOIN Department d ON e.D_no = d.D_no
+WHERE e.Salary > (SELECT AVG(e2.Salary)
+                  FROM Employee e2
+                  WHERE e2.D_no = (SELECT D_no FROM Department WHERE D_name = 'Finance Department'));
+                  
+/(ii)/
+SELECT e.F_Name, e.L_Name, d.D_name
+FROM Employee e
+JOIN Department d ON e.D_no = d.D_no
+JOIN Work_on w ON e.Emp_ssn = w.Emp_ssn
+JOIN Project p ON w.P_no = p.P_no
+WHERE d.D_name = 'R&D Department' AND p.D_no = d.D_no
+GROUP BY e.Emp_ssn
+HAVING COUNT(DISTINCT p.P_no) >=2;
+
+/(iii)/
+SELECT s.F_Name AS Supervisor_FirstName, s.L_Name AS Supervisor_LastName,
+       COUNT(DISTINCT e.Emp_ssn) AS Num_Employees_Supervised
+FROM Employee s
+JOIN Employee e ON s.Emp_ssn = e.Super_ssn
+JOIN Work_on w ON e.Emp_ssn = w.Emp_ssn
+WHERE EXISTS (SELECT 1 FROM Project p WHERE p.P_no = w.P_no)
+GROUP BY s.Emp_ssn
+HAVING COUNT(e.Emp_ssn) > 3;
+
+/(iv)/
+SELECT d.D_name, p.P_name
+FROM Department d
+JOIN Project p ON d.D_no = p.D_no
+WHERE p.P_enddate >= curdate();
+
+/(v)/
+/Note that Dependent_name is not asked to print, if examner say to remove it then remove "d.Dependent_name AS Dependent_Name  and d.Dependent_name"/
+SELECT e.F_Name, e.L_Name, d.Dependent_name AS Dependent_Name
+FROM Employee e
+JOIN Dependent d ON e.Emp_ssn = d.Emp_ssn
+JOIN Project p ON e.Emp_ssn = p.Emp_ssn
+GROUP BY e.Emp_ssn, d.Dependent_name
+HAVING SUM(p.Budjet) >= 1000000;
+
+/(vi)/
+SELECT d.D_name, e.F_Name, e.L_Name
+FROM Department d
+JOIN Project p ON d.D_no = p.D_no
+JOIN Work_on w ON p.P_no = w.P_no
+JOIN Employee e ON w.Emp_ssn = e.Emp_ssn
+JOIN Project_location pl ON p.P_no = pl.P_no
+GROUP BY d.D_name, e.F_Name, e.L_Name
+HAVING COUNT(DISTINCT pl.Location) > 1;
