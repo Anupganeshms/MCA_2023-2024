@@ -5,7 +5,6 @@ QUES: Write a Java code to demonstrate producer & consumer problems using thread
 
 
 package lab6;
-
 import java.util.LinkedList;
 import java.util.Queue;
 
