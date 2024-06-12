@@ -5,7 +5,6 @@ QUES: Create an inventory management system portal using HTML5 and apply cascadi
 //Program2
 
 
-
 //inventory.css
 
 
