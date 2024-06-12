@@ -1,0 +1,38 @@
+//here we have 2 system with
+//system1: ip-162.10.10.10 and 
+//system2: ip-162.10.10.20
+
+sudo apt-get install ftp
+sudo apt-get install proftpd
+sudo ifconfig
+sudo systemctl stop NetworkManager
+sudo ifconfig eno1 162.10.10.10 netmask 255.255.0.0 up
+sudo ifconfig
+ping 162.10.10.20
+
+
+//using put method:
+
+pwd
+cd /home/mca
+ftp 162.10.10.20
+user name: cna1
+passwd: mca
+ls
+put <filename>
+bye
+ls
+
+//using get method:
+
+pwd
+cd /home/mca
+ftp 162.10.10.20
+user name: cna1
+passwd: mca
+ls
+get <filename>
+bye
+ls
+
+//note: do same for both lab partners
