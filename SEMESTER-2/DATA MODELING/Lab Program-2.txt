@@ -1,5 +1,5 @@
 QUES: Design, Create and Implement the relational databases for any one of the Domains like Health Care, Energy, Agriculture, Telecom and others.
-//Note: Minimum Six (6) Queries to be executed including joins
+//Note: Minimum Six (6) Queries to be executed including joins.
 
 
 create table Solar_Panel(panel_no varchar(10) primary key,pv_type varchar(10),capacity varchar(10),i_charge varchar(10));
