@@ -1,0 +1,26 @@
+QUES: Build a Firewall to Restrict Network Access using Firewall D or Build a firewall with SNAT or DNAT
+
+
+//AT ONE SYSTEM
+//here we have 2 system with
+//system1: ip-162.10.10.10 and 
+//system2: ip-162.10.10.20
+
+sudo apt-get install iptables
+sudo ifconfig
+sudo systemctl stop NetworkManager
+sudo ifconfig eno1 162.10.10.10 netmask 255.255.0.0 up
+sudo ifconfig
+ping 162.10.10.20
+
+//AT ANOTHER SYSTEM
+sudo iptables  -A  INPUT -s  162.10.10.20  -j  DROP
+sudo iptables -L
+sudo iptables -F
+
+sudo iptables  -A  INPUT  -m  iprange  --src-range 162.10.10.5-162.10.10.30 -j REJECT
+sudo iptables -L
+sudo iptables -F
+
+sudo  iptables  -A  INPUT  -s  162.10.10.20  -j  DROP
+sudo  iptables  -A  INPUT  -s  162.10.10.20  -j  ACCEPT
