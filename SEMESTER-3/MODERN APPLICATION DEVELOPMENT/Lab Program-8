@@ -1,0 +1,138 @@
+Ques: Create a login page to authenticate a user using PWA with Manifest file.
+
+
+lab8
+
+index.html
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Service Worker Registration LabSet</title>
+    <link rel="manifest" href="manifest.json">
+    <script src="app.js"></script>
+  </head>  
+  <body>
+    <div >
+      <h1>
+        Service Worker
+      </h1>
+      <p>
+        Check within your browser developer tools service worker registration status
+      </p>
+      
+      <section >
+        <p>Username: <input type="text" name="username" id="username"></p>
+<p>Password: <input type="password" name="password" id="password"></p>
+<p><input type="submit" value="check" onclick="verify()"></p>
+        <button onclick="unregister()" >Unregister</button>
+      </section>
+      
+      <output></output>
+    </div>
+  </body>
+</html>
+
+x------------------x--------------------------------
+
+app.js
+
+localStorage.setItem("username","rvce");
+localStorage.setItem("pass","rvce");
+
+function verify(){
+
+let username = document.getElementById("username").value;
+let password = document.getElementById("password").value;
+let un = localStorage.getItem("username");
+let pas = localStorage.getItem("pass");
+
+if( username==un && password==pas){
+alert("Authentication Completed. Initiating Registration");
+register();
+}else{
+alert("authentication failure");
+}
+
+}
+
+
+
+
+function register(){
+if ('serviceWorker' in navigator) {
+	navigator.serviceWorker
+	.register("sw.js")
+	.then((reg)=>console.log("registered",reg))
+	.catch((err)=>console.log("err",err));
+} else {
+	console.log('No service worker support in this browser');
+}
+}
+
+
+
+function unregister() {
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker
+        .getRegistrations()
+        .then((registrations) => {
+                registrations.forEach((registration) => {
+                    registration.unregister()
+                        .then(() => console.log("Service Worker unregistered"))
+                        .catch((err) => console.error("Service Worker unregistration failed:", err));
+                });
+            });
+    }
+}
+
+x------------------x-----------------------
+
+manifest.json
+
+{
+  "name": "Lab Seven:Sevice Worker",
+  "short_name": "L7:sw",
+  "description": "Lab 7 to create a simple Service worker",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "icons": [
+    {
+      "src": "https://l7studioarchitects.com/uploads/3/4/5/5/34556958/1447398263.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "https://l7studioarchitects.com/uploads/3/4/5/5/34556958/1447398263.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg"
+    }
+  ]
+}
+
+
+
+x--------------x-------------------------
+
+sw.js
+
+// sw.js
+// method that runs when service worker is installed first time
+self.addEventListener('install', event => {
+    console.log('service worker installing');
+    // loading static html into cache first
+
+    self.skipWaiting();
+});
+
+// method that runs when the service worker is activated
+self.addEventListener('activate', event => {
+    console.log('service worker activating...')
+});
+
+// method that will run when the app makes fetch calls
+self.addEventListener('fetch', event => {
+    console.log('fetching', event.request.url);
+});
