@@ -1,15 +1,15 @@
-Program-3
+QUES: Write a Java program to demonstrate the concepts.
+i)Abstraction, Run Time Polymorphism
 
 
-3. Write a Java program to demonstrate the concepts
-i) Abstraction ii) Runtime Polymorphism
+//Program-3
 
 
 Question: write a java program to create an abstract class printer and implement all
 the methods using the concrete classes.
 
 Step 1: Create a abstract class called the printer with the methods like configuration and display
-Step 2: Create two concrete classes “Dot-matrix” and “LaserJet”. Implement the abstract class
+Step 2: Create two concrete classes â€œDot-matrixâ€ and â€œLaserJetâ€. Implement the abstract class
 printer and its methods with respect to the abstract class.
 Step 3: A Main class with a menu driven program for implementing the abstraction
 
@@ -82,7 +82,7 @@ public class DotMatrix extends Printer{
 
 package abstruction;
 
-// Step 2: Create two concrete classes “Dot-matrix” and “LaserJet”. 
+// Step 2: Create two concrete classes â€œDot-matrixâ€ and â€œLaserJetâ€. 
 // Implement the abstract class printer and its methods with respect to the abstract class.
 
 public class LaserJet extends Printer{
