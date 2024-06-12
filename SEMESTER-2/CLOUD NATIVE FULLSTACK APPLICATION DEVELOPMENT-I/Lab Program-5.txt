@@ -3,6 +3,7 @@ QUES: Write a Java program that demonstrated the Thread Life Cycle.
 
 //﻿Program -5
 
+
 package thread;
 
 class Thread1 extends Thread {
