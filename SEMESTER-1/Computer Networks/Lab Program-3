@@ -1,3 +1,6 @@
+QUES: Demonstrate secured file transfer and computing over wired network and wireless network with SCP and SSH key based computing.
+
+
 //here we have 2 system with
 //system1: ip-162.10.10.10 and 
 //system2: ip-162.10.10.20
