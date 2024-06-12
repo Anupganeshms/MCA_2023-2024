@@ -1,0 +1,111 @@
+Ques: Demonstrate with Spring Boot: Setup a Kubernetes development Env on your Sandbox (use Docker Desktop or Minicube)
+
+
+Program 10:
+
+Steps:
+
+1. Download jar file from folder prog-8:
+
+2. Open new terminal and change Directory to the folder that contain jar file.
+
+3. Install Minikube
+
+4. Start Minikube by running the " minikube start " command.
+
+5. Minikube comes with its Docker daemon. You need to configure your Docker CLI to use Minikube's Docker daemon. You can do this by running -- " eval $(minikube docker-env) "
+
+6. create a Dockerfile using command “nano Dockerfile”.
+
+7. paste these line of code in Dockerfile and save it.
+
+FROM eclipse-temurin:17-jdk-alpine
+MAINTAINER myNAME
+COPY demorest-0.0.1-SNAPSHOT.jar /home/demorest-0.0.1-SNAPSHOT.jar
+CMD ["java","-jar","/home/demorest-0.0.1-SNAPSHOT.jar"]
+
+
+8. Build the image using " docker build -t lab10:latest . "
+
+9. Once the image is built, create a Kubernetes manifests and refer image in your Kubernetes manifest using command -- "nano kuber.yaml "
+
+
+kuber.yaml
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp-deploy
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: myapp
+  template:
+    metadata:
+      labels:
+        app: myapp
+    spec:
+      containers:
+      - name: myapp
+        image: lab10:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: myapp-service
+spec:
+  type: NodePort
+  selector:
+    app: myapp
+  ports:
+  - port: 80
+    targetPort: 8080
+
+
+
+10. Apply the Kubernetes manifest containing the Deployment and service configuration to Minikube using the command -- " kubectl apply -f kuber.yaml "
+
+11. Check the status of the pods, it must show status as Running -- " kubectl get pods "
+
+12. Deployment and Service have been successfully configured in your Kubernetes cluster. You can verify this by checking the status of the Deployment and Service using command -- 
+
+kubectl get deployment myapp-deploy
+kubectl get service myapp-service
+
+13. Note down the NodePort that you get by running command -- " kubectl get service myapp-service "
+
+14. Determine the IP address of any of your Kubernetes nodes using command -- " minikube ip "
+
+15. Then, access your application in a web browser using the following URL format (http://<minikube-ip>:<node-port>/person)    EXAMPLE: (http://192.168.1.100:30190/person)
+
+16.After starting the service open postman and use get, post, delete for demonstration. 
+
+17. GET: http://<ip>:<port>/person
+
+18. POST: http://<ip>:<port>/person
+{
+"name": "",
+"address": ""
+}
+
+19. DELETE: http://<ip>:<port>/person?name=<>
+
+
+20. stop and restart the minikube using command--
+
+minikube stop
+minikube start
+
+
+
+
+
+
+
+
+
+
