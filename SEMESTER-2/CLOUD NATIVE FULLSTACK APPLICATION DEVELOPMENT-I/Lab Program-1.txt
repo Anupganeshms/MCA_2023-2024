@@ -2,7 +2,7 @@
 Encapsulation, Inheritance & Multiple Inheritance
 
 
-//PROG1	
+//PROGRAM1	
 
 
 package testJava;
