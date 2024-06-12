@@ -1,4 +1,9 @@
-program5
+QUES: Design a page to accept student details for selection of electives
+a) Read the values of 20 students
+b) Display various charts using D3 JavaScript.
+
+
+//program5
 
 <html>
 <head>
