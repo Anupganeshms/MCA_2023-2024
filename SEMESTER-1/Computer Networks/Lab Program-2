@@ -1,6 +1,7 @@
 QUES: Create a LAN using physical networks/virtual machine and install FTP server to demonstrate file transfer.
 
 
+
 //here we have 2 system with
 //system1: ip-162.10.10.10 and 
 //system2: ip-162.10.10.20
