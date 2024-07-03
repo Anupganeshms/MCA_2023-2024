@@ -1,0 +1,335 @@
+1. The estimation technique is normally chosen in such a way that the entire scrum
+team is acquainted and comfortable with scale's values.
+
+Having estimates allows the Scrum Team to do the following:
+ • Prioritize items in the Product Backlog: This happens as part of the Backlog
+refinement process.There are many ways to prioritize the items in the Product
+Backlog, and effort or size estimates are one way to do so.
+• Choose which items to place in the Sprint Backlog: This happens during the
+Sprint planning event,. If we can't estimate these items, we cannot decide which
+ones we can work on within a Sprint.
+ • Forecast our future work: A forecast is a calculation of the completion of an
+item, feature, or product. Estimates are often used to formulate forecasts.
+• Promote analysis and share understanding: Estimates often serve as the
+basis of discussion about the value of an item, or even help prompt the elicitation
+of more precise requirements and deeper analysis about the item. 
+
+2. Choosing an estimation scale
+● The lower end of the scale should represent items that take the least effort or
+are the least complex. The high end of the scale should represent items that
+take the most effort or are the most complex.
+● Many Scrum Teams use the Fibonacci series (1, 2, 3, 5, 8, 13, 21, 34, and so
+on).
+● Others use a T-shirt size scale (S, M, L, XL, and XXL).
+● used fruit to denote the complexity of a task (cherries were the simplest ones,
+while pineapples were the most complex).
+● Some organizations tend to use a modified Fibonacci series (1/2, 1, 2, 3, 5, 8,
+13, 20, 40, and 100) as it's more flexible and readable.
+●good idea to include a value for items that the estimator thinks cannot be
+estimated or completed within a reasonable time, or to an expected quality.
+The question mark (?) and infinity (∞) symbols are normally used for that
+purpose.
+● scale as a deck of cards and allocate a deck to each developer
+
+3. Playing Planning Poker
+● Planning Poker is played by gathering the Scrum Team together and giving each d
+The process then goes as follows:
+1. The Product Owner reads out an item from the Product Backlog, including all the
+relevant details and contextual information.
+2. The developers are called to display a card with their estimate for that item. The
+display of cards must be simultaneous, and the developers should keep their choice
+hidden from one another until it's time to display them, in order to avoid bias in the
+estimation.
+3. The developers who had the lowest and highest estimate value will be called to
+justify their estimates. This will start a discussion between the whole Scrum Team
+as to the size and complexity of the item. Developer a deck of cards with our chosen
+estimation scale
+4. All the developers are then called to give another estimate for the item,
+considering the previous discussion.
+ 5. Steps 3 and 4 are repeated until a consensus has been reached as to the
+estimated value of the item.
+6. The Product Owner reads out the next item from the Product Backlog and the
+process starts again
+
+4. Planning ahead with the product roadmap
+
+A product roadmap is a shared source of truth that outlines the vision,
+direction, priorities, and progress of a product over time. It’s a plan of action
+that aligns the organization around short and long-term goals for the product
+or project, and how they will be achieved.
+
+● roadmap provides a strategic and actionable plan for realizing the Product
+
+Goal. It helps us achieve the following:
+○ Demonstrate to stakeholders how we are going to realize the Product Goal as a series of
+activities leading to achievable milestones.
+○ Clearly identify priorities and initiatives that should be pursued or used to the Product Goal.
+○ Facilitate the discussion of options and scenario planning.
+○ Communicate the product strategy to external stakeholders, such as customers.
+
+5. create roadmaps
+● Maintain a high level of granularity: Avoid using specific user stories or detailed features in
+your roadmap. These are fine for short-term, tactical planning, such as the Sprint planning
+event. The product roadmap, however, is a medium-to-longterm strategic planning tool.
+Having features or low-level stories in the roadmap will make it difficult to understand and
+explain, and it also prone to change often. Instead, populate the roadmap with generic,
+high-level user stories (often called epics).
+● Avoid using fixed dates: First, it's impossible to predict an event 6 months into the future
+with great accuracy. Second, dates are often taken as immutable promises or commitments
+by the stakeholders, and that seldom ends well. Use time periods instead, such as financial
+year quarters.
+● Don't look too far into the future: Uncertainty only increases with time. Most product
+roadmaps need revising every 6 months or so; therefore, it is pointless having a roadmap
+that spans over a year.
+
+6. Calculating team velocity--diagram
+● Velocity is a metric that specifies the average amount of Product Backlog
+items we can turn into an Increment during a Sprint.
+● Velocity – or Sprint velocity – is the number of story points completed by a
+development team in one Sprint. Story points measure the complexity of tasks
+or user stories – user-centric product narratives – and how much effort it
+takes to accomplish them. Some teams use different measurements, like
+hours or stories completed, to calculate their velocity. Whatever data you use,
+the concept remains the same: Velocity indicates how much work the team
+has finished in a Sprint.
+
+7.Burndown charts--diagram
+● Burndown charts let us visualize how much work has been done and how
+much work remains to be done. A burndown chart is a simple linear chart with
+two axes:
+• A vertical axis, denoting the work to be done, usually in the form of story points.
+• A horizontal axis, representing the remaining time. In the case of a daily Sprint
+chart, that would be represented as days.
+
+To create a Sprint daily burndown chart, we must do the following:
+ 1. On the vertical (work) axis, mark the story points we estimated for the Sprint.
+2. On the horizontal (time) axis, mark the days of the Sprint.
+3. Draw a straight line between the two points we marked previously. This will be the ideal
+burndown slope.
+ 4. Every day during the Sprint, mark the amount of work that was completed on that day.
+5. Join the daily work marks to form a line on the chart. This is the actual burndown slope. 
+
+
+8. Burnup charts
+● Burnup charts are similar to burndown charts, in the sense that they are both
+linear charts. However, their usefulness and application are different. Burnup
+charts let us visualize progress over time. They are especially useful for
+tracking progress toward a longer-term goal, such as a release or another
+goal or milestone on our product roadmap. The vertical axis of the chart is for
+the total project work planned, while the horizontal axis is for tracking
+completed work.
+
+To create a burnup chart for a goal, such as a Release, we must do the
+following:
+1. On the vertical (work) axis, we mark the story points we estimated for the Release.
+This is our planned work line.
+2. On the horizontal (time) axis, we mark the Sprints we have planned for the Release.
+3. Draw a straight line from the point where our planned work line meets the final
+Sprint, all the way down to the start of the axis (point 0). This is the ideal line of
+completed work.
+4. At the end of each Sprint, mark the amount of story points that were delivered
+during the Sprint.
+5. Join the daily work marks to form a line on the chart. This is the actual line of
+completed work. 
+
+9. The bucket Method
+
+The bucket method, also known as bucket testing or A/B testing, is a technique used in software engineering to compare two versions of a product or feature to determine which one performs better. It involves dividing users into groups, or "buckets," and exposing each group to a different version of the product or feature. By comparing the outcomes or user interactions between the groups, developers can gather data to make informed decisions about which version to implement.
+
+For example, let's say a company is redesigning its website's homepage and wants to determine which design leads to higher user engagement. They could create two versions of the homepage, A and B, with different layouts or content arrangements. They then randomly assign users who visit the site to either the A or B bucket, ensuring that each version is exposed to a similar audience.
+
+Over a period of time, the company collects data on user interactions such as click-through rates, time spent on page, or conversion rates for each version. After gathering sufficient data, they analyze the results to determine which version performed better based on the predefined metrics. The version that shows better performance is then chosen for implementation on the website.
+x----------------x--------------------------
+ The Sprint Journey
+
+1. Product Backlog refinement
+Product Backlog refinement is the activity of breaking down backlog items into
+more concise and manageable items and providing more details. During
+refining, the Scrum Team analyzes, discusses, estimates, and orders backlog
+items. The purpose of the activity is to enable Developers to start working on
+items with the least amount of disruption or ambiguity
+
+2.how to apply order to the Product Backlog
+● There are four main criteria to consider when ordering the backlog
+○ Value: This is about the benefits an item provides to the stakeholders, the organization, or the Team.
+These could be of business or economic value. It is common to order higher-value requirements first
+○ Cost: Cost ordering is about implementing items that can be delivered with the least time, effort, or
+money (the low-hanging fruit approach). It can also be about delivering items with the greatest return
+on investment (ROI). ROI is usually calculated by dividing the estimated value of an item by its
+estimated cost.
+○ Risk: Ordering based on risk is most used on products leveraging new, controversial, or disruptive
+ideas or technologies. The idea is that, if the high-risk items fail to be delivered, then the product can
+be scaled down or re-scoped.
+○ Urgency: Some items may be more time-sensitive than others. For instance, an item might be defining
+some functionality that is scheduled for demonstration at an upcoming trade show or conference.
+Such an item would find its way to the top of the product backlog, to be implemented at the next
+Sprint.
+
+3. Scrum Master duties for
+Product Backlog refinement
+● The Scrum Master should do the following:
+• Facilitate Product Backlog refinement workshops.
+• Ensure the three aspects of Product Backlog refinement (detail, estimates, and
+order) are fully understood by the team.
+• Communicate the importance of shared responsibility when refining the backlog.
+• Teach Developers best practices for estimating items.
+• Help the team in scoping or breaking up backlog items in such a way that an item
+can be delivered (Done) within a Sprint.
+
+
+4. Tracking progress with a Scrum Board--diagram
+● A Scrum Board is a tool that helps Scrum Teams visualize Sprint Backlog
+items and track their progress. The board can have different styles and
+content, depending on the team and organization where it's being used, but
+its purpose remains the same. The board is updated by the team and shows
+all items that need to be completed for the current Sprint. Items on a Scrum
+Board are usually represented as cards. Each card has a title, description,
+and other metadata, and can be colored and labeled in different ways. 
+
+5. Sprint backlog: This is where we place the Product Backlog items that we have
+committed to deliver in the Sprint, during the Sprint Planning event. All the items
+placed in the Sprint Backlog will have been described in detail, estimated, and
+have clear acceptance criteria. This is where we also place the tasks required to
+implement and deliver the Product Backlog items. These tasks are not restricted
+to programming but may represent anything necessary to deliver the item.
+• In progress: Tasks that we've started working on are moved into this column. They
+stay here until they are Done.
+• Done: When a task has been completed and meets our definition of Done, it is
+moved to the Done column. For coding tasks, this would usually mean that the
+code passes all tests and has been code-reviewed.
+
+6. What to do when the Sprint Goal is not achieved
+● Root cause analysis: The Developers need to find out why they weren't able to
+complete the Sprint. Was it a case of underestimating, changed circumstances,
+or unmitigated risks? Whatever the root cause was, it must be discovered and
+documented, for future reference and avoidance.
+● Re-estimation: The Developers must document the remaining work for any
+incomplete item and re-estimate accordingly.
+● Moving incomplete items back to the Product Backlog:incomplete items must be
+moved back to the Product Backlog. In the Sprint Planning event for the next
+Sprint, the Product Owner will prioritize the item and the whole team will decide
+whether to put in in the upcoming Sprint's backlog.
+● Discussing the item at the Sprint Retrospective: This is what Sprint
+Retrospectives are for. If the delivered increment was not in working
+condition, this is where we try to understand why and re-evaluate our
+definition of Done. The Sprint Retrospective is an opportunity for learning and
+improving as a team
+
+
+7. Defects in Scrum
+● Defects in Scrum depends largely on when the defects are discovered:
+○ In-Sprint defects are defects discovered within the current Sprint.
+○ Out-of-Sprint defects are discovered in previously released increments.
+○Knowing how to triage defects
+●A defect is a discrepancy between the software's actual and expected behavior.
+A defect is usually caused by a coding or design error (a bug) or by a
+misunderstanding of the user requirements. When the Scrum Team becomes
+aware of a defect, they should ensure that the defect is appropriately triaged. This
+involves determining two basic attributes of the defect:
+●Priority is about the timeframe by which the defect must be fixed. This
+usually determined by business or client needs, such as release dates,
+service level agreements (SLAs), planned presentations, and others. A
+defect's priority is usually rated as low, medium, or high.
+● Severity is about quantifying the impact of the defect on the product's users.
+This is normally determined by the functionality area and the number of users
+affected. For example, a defect with a shopping application's basket checkout
+functionality would be classed as critically severe as it affects a core system
+area and most of the application's users. A defect's severity is usually rated
+as critical, major, moderate, minor, and cosmetic.
+
+8. Dealing with defects in the current Sprint
+Developers should follow these steps:
+1. Move the defective item back to the In progress column.
+2. Create a new task to fix the defect.
+3. Embellish the item's description and acceptance criteria, if necessary.
+4. Change the definition of Done at the Sprint Retrospective
+ 
+9. Dealing with defects from previous Sprints
+1. The Scrum Team creates a new Product Backlog item to describe the defect.
+2. The Product Owner, in consultation with the stakeholders, triages the defect
+as described in the Knowing how to triage defects section.
+3. The Product Owner orders the item in the Product Backlog according to its
+triaged priority and severity. The Scrum Team can then decide whether to
+include the item in the next Sprint's backlog during the next Sprint Planning
+event
+x-------------------x------------------
+
+Facets of Scrum
+
+1. software development practices for Scrum
+
+●The issue of how to control and manage different versions of the same source
+code has existed since software developers started working together to create
+software applications. The current de facto standard for source and version
+control management in the software industry is Git
+
+● These are called the branching models, as Git leverages a tree metaphor,
+where separate code versions are in fact branches sprouting off the main
+product code (the tree). Developers avoid overriding each other's changes by
+creating their own copy of the code base (a branch), while the main copy is
+called the trunk (also known as the master branch or mainline). When a
+developer wants to incorporate their branch back into the trunk, they use a
+process called merging. Each merge is based on specific points or snapshots
+of the trunk, called code commits.
+
+● This practice of merging code changes back to the main branch as often as
+possible is called continuous integration (CI). It helps to avoid integration
+issues that often arise when infrequently merging code changes into the
+trunk. CI is the first step in a trio of software practices that are frequently used
+by Scrum Teams. The other two are continuous delivery and continuous
+deployment
+
+2. Source control models for continuous integration typically involve using a version control system (VCS) such as Git, SVN, or Mercurial. These systems allow developers to collaborate on code changes, track revisions, and manage code versions effectively. Here's a general outline of a source control model for continuous integration using Git as an example:
+●Branching Strategy: Use a branching strategy that supports continuous integration, such as GitFlow or GitHub flow. This typically involves having a main branch (e.g., master or main) where the stable code resides and creating feature branches for new development.
+●Feature Branches: Developers create feature branches from the main branch for implementing new features or fixing bugs. Each feature branch should be short-lived and focused on a specific task.
+●Pull Requests: Once a developer completes work on a feature branch, they create a pull request (PR) to merge their changes back into the main branch. The PR undergoes code review and automated tests before merging.
+●Automated Tests: Set up automated tests (unit tests, integration tests, etc.) that run on every push to a feature branch and on every PR. These tests help ensure that new changes do not introduce regressions.
+●Continuous Integration Server: Use a CI server (e.g., Jenkins, GitLab CI, Travis CI) to automate the build and test process. The CI server monitors the main branch and feature branches for changes and triggers builds and tests accordingly.
+●Build Artifacts: After a successful build and test process, the CI server generates build artifacts (e.g., compiled code, executables) that can be deployed to various environments for further testing.
+●Deployment: Depending on your deployment strategy, you can automatically deploy the build artifacts to staging or production environments after passing all tests and reviews.
+●Feedback Loop: Continuous integration fosters a feedback loop where developers receive immediate feedback on their code changes. This helps identify and fix issues early in the development process.
+
+3. Continuous delivery and continuous deployment
+● Continuous delivery (CD) is an extension of CI. It involves automatically deploying
+all code changes to a staging or pre-production environment after the build stage.
+This is achieved by implementing an automated release process that can deploy our
+increment any time on the click of a button.
+● Continuous deployment goes one step further than CD. With this practice, every
+change that's successfully deployed to staging is automatically released to the
+stakeholders and customers. Continuous deployment removes the effort and stress
+of releasing increments at predetermined milestones or dates. The developers can
+focus on building software, while their work is constantly released to customers for
+review and feedback. The following diagram illustrates the differences between
+continuous integration, delivery, and deployment:
+
+4. Leveraging testing methods for Scrum
+● Most Scrum Develo
+● Unit testing: This is the simplest and most regularly used form of testing. This
+is used to test a single unit of code, such as a class or function.
+● API/service testing: This is about testing the interface between different code
+components or services.
+● Acceptance testing: Used to verify acceptance criteria of user stories or
+executable specifications in the Gherkin specification language. 
+●System testing: This consists of end-to-end testing of the system to ensure it meets
+the requirements and functions according to specifications. System testing is
+applied to validate both functional and non-functional requirements, such as
+performance or accessibility.
+● Regression testing: This is a combination of system and unit testing. It is applied to
+ensure that the added product functionality has not affected previous or existing
+functionality.
+● User acceptance testing: This is a more informal testing method, where customers
+or users of the application try to perform their usual workflows or go through a user
+journey on the released application.
+● Smoke testing: This is a short and quick testing method that checks the basic
+functionality of the application. This is usually applied after a release, to ensure that
+the major features of the application are working as expected
+
+5. Applying Scrum to remote teams
+● cultivate a culture of asynchronous communication.
+● replace synchronous Daily Scrums with online boards
+● create time and channels for personal interaction
+● ensure transparency by ensuring the product backlog, Scrum Board, wiki,
+documentation, and meeting appointments are easily accessible by all
+stakeholders
+
+

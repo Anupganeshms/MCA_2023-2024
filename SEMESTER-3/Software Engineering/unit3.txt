@@ -1,0 +1,330 @@
+what is Agile?
+--Agile is not a specific methodology, process, or framework but more of a mindset; a set of
+principles and ideals to guide us through the software development process.
+
+1. Agile Manifesto
+• Individuals and interactions over processes and tools
+• Working software over comprehensive documentation
+• Customer collaboration over contract negotiation
+• Responding to change over following a plan
+
+2. The principles of Agile are as follows:
+• Our highest priority is to satisfy the customer through early and continuous
+delivery of valuable software.
+• Welcome changing requirements, even late in development. Agile processes
+harness change for the customer's competitive advantage.
+• Deliver working software frequently, from every couple of weeks to every couple
+of months, with a preference for a shorter timescale.
+• Businesspeople and developers must work together daily throughout the project.
+• Build projects around motivated individuals.
+• Give them the environment and support they need and trust them to get the job
+done.
+• The most efficient and effective method of conveying information to and within a
+development team is face-to-face conversation.
+
+3. what is Scrum. Write different component of Scrum? --learn diagram
+
+Scrum is a process framework, not a process by itself. It introduces a number of rules,
+milestones, and checkpoints that must be adhered to, regardless of the underlying
+development process. The Scrum framework can be used to contain a varied number of popular
+development methodologies, processes, or techniques, as per the organization's working practices.
+Scrum doesn't tell us how to perform our work, it just sets up a container within which to
+perform it.
+
+The Scrum framework consists of three components:
+ • The Scrum Team: A self-organizing, cross-functional set of people who will deliver the working
+software.
+ • Scrum Events: A number of time-boxed events that help create regularity, provide feedback, foster
+self-adjustment, and promote an iterative and incremental lifecycle.
+ • Scrum Artifacts: Items that represent work or added value and that provide transparency for the
+team's work progress and achievements. Artifacts are also the cornerstone of inspection and adaptation. 
+
+4. what is scrum team?
+
+A scrum team is a small and nimble team dedicated to delivering committed
+product increments. A scrum team's size is typically small, at around 10
+people, but it's large enough to complete a substantial amount of work within
+a sprint
+● The Scrum Team consists of three specific roles, a Product Owner, a Scrum
+Master, and Developers
+
+Scrum Team is more than just its structure; it has certain unique characteristics too:
+● Scrum Teams are self-managing: That means the team decides between themselves how
+to best accomplish their work, instead of relying on external direction.
+● Scrum Teams are cross-functional: That means they have all the skills and competencies
+necessary to deliver the required software, without the need for external specialists or
+consultants.
+● Scrum Teams are numerically bounded: The Scrum Team should consist of no more than
+10 members in order to optimize productivity and minimize coordination complexity.
+● Scrum Teams differentiate between the product, the work, and the process: There is no
+project manager who supervises all three. The Product Owner looks after the product, the
+Developers look after themselves and the required work, and the Scrum Master looks after
+the process while facilitating the rest of the team.
+
+4. what is scrum event. How scrum event are timeboxed?--learn diagram
+
+Scrum Events: A number of time-boxed events that help create regularity, provide feedback, foster
+self-adjustment, and promote an iterative and incremental lifecycle.
+
+Events – such as the Sprint Review and the Sprint Retrospective – allow us to
+make changes, take actions, and create plans. These changes, actions, and
+plans must be visible to all stakeholders.
+
+The prescribed time-boxes are based on a sprint of 1 month. For shorter Sprints, the event is generally shorter.
+The time-boxes are:
+● Daily Scrum: 4.5 minutes;
+● Sprint Planning: at most 8 hours;
+● Sprint Review: at most 4 hours;
+● Sprint Retrospective: at most 3 hours;
+
+● If we also consider the on-going activity of refining the Product Backlog requires on average 10% of the
+capacity of the Development Team according to the Scrum Guide:
+
+● For a full-time developer in a 4-week Sprint, the Scrum events take at most 22.5% of the time:
+
+● Full-time: 160 hours per Sprint
+● Scrum events: 20 hours
+● Backlog refinement: at most 16 hours
+
+5. The three Scrum Artifact
+
+-ProductBacklog
+-Sprint Backlog
+-product increment
+
+The Product Backlog is an ordered list of everything that is needed in the product. Each product has its
+own unique backlog. It is the only source of planned work for the product. The Product Backlog is a living
+artifact; it is constantly in flux as requirements and market conditions change.
+
+commitment For the Sprint Backlog it is the Sprint Goal.The Product Goal describes a future state of the product which can serve as a target for the Scrum
+Team to plan against. The Product Goal is in the Product Backlog. The rest of the Product Backlog
+emerges to define “what” will fulfill the Product Goal.
+
+
+
+6. Scrum Theory and Principle?
+
+Scrum is founded on empiricism and lean thinking. Empiricism asserts that
+knowledge comes from experience and making decisions based on what is
+observed. Empiricism is often contrasted with rationalism. Lean thinking
+reduces waste and focuses on the essentials.
+
+● Empiricism has three pillars, and Scrum is built on these:
+transparency, inspection and adaptation
+
+7.write about three pilars of Empiricism- learm diagram
+
+Inspection
+Inspection is about asking the right questions, such as the following:
+• Which practices that were followed did not work well?
+• What are the things we did right in the Sprint?
+• What could we have done better?
+Scrum fosters constant inspection of artifacts through the attendance of events,
+such as the Daily Scrum, the Sprint Review, and the Sprint Retrospective.
+
+Adaptation
+Adaptation is a natural consequence of Inspection. In fact, Adaptation cannot
+exist without Inspection.
+Responding to change is one of the four values of the Agile Manifesto.
+Adaptation is the application of this value
+
+Transparency
+In order to be able to inspect and adapt, we need to be able to easily observe
+what we do and understand how and why we do it. To achieve that, we must
+make our events, artifacts, and the team itself open to inspection. This is what
+Transparency is all about: exposing our way of working, our actions, and our
+thinking to the team and stakeholders
+
+7. what are scrum values?--learn diagram
+
+The five Scrum values are commitment, focus, openness, respect, and
+courage.
+
+Courage - Scrum Team members need courage to do the right thing and face tough problems. For example,
+they should exhibit courage to explore the unknown, to change direction, to share information and to engage in
+courteous disagreements.
+● Focus - The Scrum Team focuses on the work of the Sprint and its goals. Examples of this include focusing on:
+creating value, what’s currently most important and getting to Done.
+● Commitment - Each Scrum Team member commits to achieving the team’s goals and to support each other.
+This involves commitment or dedication to:
+○ Delivering value;
+○ Quality;
+○ Working toward the Sprint and Product Goals;
+○ Using empiricism.
+● Respect - It’s necessary for Scrum Team members to respect each other as skilled professionals. Scrum Team
+members should respect each other's differing expertise and perspectives and be respectful when they
+disagree.
+● Openness - The Scrum Team and its stakeholders agree to be open about all of the work and the challenges
+with performing the work. Scrum Team members should be open about the struggles they face. They should
+share feedback and learn from each other and from their stakeholders.
+
+
+8. what is scrum master? --learn diagram
+
+A Scrum master is a professional who leads a team through a project using Agile
+project management techniques. A Scrum Master facilitates all the
+communication and collaboration between leadership and team players to ensure
+a successful outcome.
+
+Scrum Master responsibilities
+• Promoting and supporting Scrum as defined in the Scrum Guide
+• Helping the organization understand and enact Scrum
+• Ensuring that Scrum Events take place at the appropriate time and that they are time-boxed
+• Ensuring that the purpose and value of Scrum Events is well understood by the Scrum Team
+• Ensuring that Scrum Events are conducted in a positive and constructive manner
+• Removing impediments to the Developers' progress
+• Helping provide transparency for Scrum Artifacts
+• Coaching the Developers on how to increase self-management, cross-functionality, and productivity
+• Helping stakeholders in their interactions with the Scrum Team
+• Coaching and advising the organization on Scrum adoption techniques and practices
+• Coaching the Product Owner on effective Product Backlog management techniques
+
+9. The Product Owner
+The Product Owner (PO) is the Agile team member primarily responsible for maximizing the value
+delivered by the team by ensuring that the team backlog is aligned with customer and stakeholder
+needs
+
+10. Scrum Events
+The events are as follows:
+• The Sprint
+• Sprint Planning
+• Daily Scrum
+• Sprint Review
+• Sprint Retrospective
+
+11. what is sprint?--learn diagram
+
+A Sprint is a container event, as all the other Scrum Events take place within the duration and context
+of a Sprint. The ultimate purpose of the Sprint is to have the Developers produce an Increment
+
+.Each Sprint begins with a planning phase. It
+is represented in Scrum by the Sprint
+Planning event.
+
+.The implementation phase, where all the
+development work happens, is enabled by
+the Daily Scrum Event.
+
+.Finally, the last phase of the Sprint
+(Inspection & Adaptation) is marked by two
+events, the Sprint Review and the Sprint
+Retrospective. 
+
+.The Sprint Goal is an objective meant to provide guidance and focus to the
+Developers. A Sprint Goal should add value by addressing risks, testing
+assumptions, or delivering features. It should be used to facilitate
+decision-making when deciding which work items to tackle in the Sprint.
+
+12.sprint planning
+
+The Sprint Planning aims to answer two questions: •
+ What can be delivered in the Increment resulting from the upcoming Sprint?
+How will the work needed to deliver the Increment be achieved?
+
+The inputs for the Sprint Planning are as follows:
+● The Product Backlog. This is an ordered list of everything that is needed in
+order to create the product
+● The latest Product Increment, which is the cumulative work the team has
+produced so far.
+● Projected developer capacity for the Sprint.
+
+● The outputs of the Sprint Planning are as follows:
+ The Sprint Goal for the upcoming sprint, as discussed earlier in this chapter. • A
+list of Product Backlog items that can be Done by the Developers within the
+Sprint, along with any planned tasks needed to get these items Done known as
+Sprint Backlog
+
+13. Sprint Planning for the Scrum Master
+● The Scrum Master ensures that the event takes place and that attendants
+understand its purpose.
+● The Scrum Master also ensures that the event is kept within its time-box
+(maximum duration).
+● The Scrum Master may also ask the Developers for clarification on how they
+intend to achieve the Sprint Goal or create the Sprint's anticipated Increment
+
+14. Sprint Planning for the Developers
+● The Developers help the Product Owner set a Sprint Goal for the upcoming
+Sprint.
+○ Whether an item is contributing toward accomplishing the Sprint Goal.
+○ Developer capacity. This is the Developers' estimated or measured units of work that can be
+delivered within a Sprint.
+○ The Product Increment. Previously delivered functionality may affect the estimated cost of an
+item, as well as its relevance to the Sprint Goal.
+
+15. Creating Backlog items as user stories
+● The Scrum Guide refers to the Product Backlog as a generic list of items. It
+does not specify what these items should be other than that they should have
+the attributes of a description, order, estimate, and value. The de facto
+standard for representing such items is the user story
+A user story is a concise description of some required functionality told from the
+perspective of the person who needs or desires it. 
+
+User stories
+● User stories may be written in many formats, but the most commonly used template
+is as follows: As a , I want so that . Some examples of user stories are as follows:
+● As a vegetarian pizza buyer, I want to see only the vegetarian toppings so that I
+can order a pizza without getting distracted by toppings I won't choose.
+● As a bank account holder, I want to see how much interest I earned in the last year,
+so that I can decide whether to keep or change my account.
+● As the marketing manager, I need to see what geographical locations our system
+logins are from, so that I can understand our clients' demographics better.
+● As a displeased customer, I want to quickly, and easily, describe my issues to the
+business so that I can have them rectified. 
+
+16.Creating Stories with the three Cs
+● Card: The card here refers to the index card or post-it note that was originally
+used to capture user stories. The point here is that the story should capture
+the essence of the requirements and not a full specification of the intended
+functionality. Notes such as priority, size estimate ,and acceptance criteria
+may also be part of the story. The rest should be derived through
+conversation with the Product Owner
+
+● Conversation: This is where the details of the requirements and derived
+functional behaviors are brought to light. Conversations are between the
+developers and the Product Owner (or stakeholders that have been referred
+to by the Product Owner). These conversations usually take place several
+times as the mutual understanding about the requirements increases.
+Documentation may also be generated because of these conversations, such
+as BDD feature files, for instance
+
+●Confirmation: We need to be able to verify whether our work actually
+produces the value the user story encapsulates. The best way to do that is to
+identify some acceptance criteria; that is, conditions that indicate when the
+story has delivered the required value to the stakeholders.
+
+17. The INVEST guidelines for User Stories
+● Independent
+● Negotiable
+● Valuable
+● Estimable
+● Small
+● Testable
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
