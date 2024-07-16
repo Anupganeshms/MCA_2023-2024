@@ -1,6 +1,6 @@
 # Master of Computer Applications (MCA) Course
 # R.V. College of Engineering, Bengaluru
-# Duration: 2022-2024
+# Duration: 2023-2025
 
 # Course Overview
 
